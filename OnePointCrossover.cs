@@ -7,7 +7,7 @@ namespace ga1
 {
     class OnePointCrossover : ICrossover
     {
-        int crossoverPoint = -1;
+        
         public OnePointCrossover(int crossoverPoint = -1)
         {
             this.crossoverPoint = crossoverPoint;
@@ -15,6 +15,10 @@ namespace ga1
        
         public IChromosome[] Crossover(IChromosome father, IChromosome mother)
         {
+            if (father == null || mother == null)
+            {
+                throw new Exception("virgin birth will be implemented in next version..."); // ;-)
+            }
             
             if (father.Length != mother.Length)
             {
@@ -26,7 +30,7 @@ namespace ga1
             }
             if (crossoverPoint <= 0)
             {
-                Random rnd = new Random();
+                rnd = new Random();
                 crossoverPoint = rnd.Next(1, father.Length - 1);
             }
             if (crossoverPoint >= father.Length)
@@ -51,5 +55,8 @@ namespace ga1
                 ((IChromosome)Activator.CreateInstance(father.GetType())).GenerateFromArray(child2) };
             return childArray;
         }
+
+        private int crossoverPoint = -1;
+        private Random rnd = new Random();
     }
 }

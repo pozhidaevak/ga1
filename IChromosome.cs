@@ -8,11 +8,9 @@ namespace ga1
     interface IChromosome
     {
         /// <summary>
-        /// Generate random chromosome value.
+        /// Generate random chromosome
         /// </summary>
-        /// 
-        /// <remarks><para>Regenerates chromosome's value using random number generator.</para>
-        /// </remarks>
+        /// <param name="length">length of chromosome</param>
         /// 
         void Generate(int length);
 
@@ -26,7 +24,7 @@ namespace ga1
         /// 
         IChromosome Clone();
         /// <summary>
-        /// Crossover two chromosomes/
+        /// Crossover two chromosomes
         /// </summary>
         /// <param name="crossover">Crossover Operation</param>
         /// <param name="mother">AnotherChromosome</param>
