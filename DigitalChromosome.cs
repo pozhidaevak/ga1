@@ -7,10 +7,20 @@ namespace ga1
 {
     class DigitalChromosome : IChromosome
     {
-
+        public DigitalChromosome()
+        {
+            rnd = new Random();
+        }
+        private Random rnd;
         public IChromosome[] Crossover(ICrossover crossover, IChromosome mother)
         {
             return crossover.Crossover(this, mother);
+        }
+        public IChromosome Clone()
+        {
+            DigitalChromosome clone = new DigitalChromosome();
+            clone.GenerateFromArray(this.ToArray());
+            return clone;
         }
 
         private int[] gens;
@@ -35,10 +45,9 @@ namespace ga1
         public void Generate(int length)
         {
             //gens = new int[length];
-            Random rnd = new Random();
+            
             gens = Enumerable.Range(1, length).OrderBy(i=>rnd.Next()).ToArray();
             
-
         }
 
     }

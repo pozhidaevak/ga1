@@ -16,15 +16,6 @@ namespace ga1
         /// 
         void Generate(int length);
 
-        /// <summary>
-        /// Create new random chromosome with same parameters (factory method).
-        /// </summary>
-        /// 
-        /// <remarks><para>The method creates new chromosome of the same type, but randomly
-        /// initialized. The method is useful as factory method for those classes, which work
-        /// with chromosome's interface, but not with particular chromosome class.</para></remarks>
-        /// 
-        //IChromosome CreateNew();
 
         /// <summary>
         /// Clone the chromosome.
@@ -33,7 +24,7 @@ namespace ga1
         /// <remarks><para>The method clones the chromosome returning the exact copy of it.</para>
         /// </remarks>
         /// 
-        //IChromosome Clone();
+        IChromosome Clone();
         /// <summary>
         /// Crossover two chromosomes/
         /// </summary>
@@ -45,6 +36,7 @@ namespace ga1
         IChromosome GenerateFromArray(Array gens);
 
         Array ToArray();
+        String ToString();
         int Length { get; }
     }
 }

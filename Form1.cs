@@ -14,7 +14,7 @@ namespace ga1
         public Form1()
         {
             InitializeComponent();
-            ICrossover cross = new OnePointCrossover();
+            ICrossover cross = new OnePointCrossover(2);
             IChromosome chr = new DigitalChromosome();
             IChromosome chr2 = new DigitalChromosome();
             chr.GenerateFromArray(new int[4] {1,2,3,4});
