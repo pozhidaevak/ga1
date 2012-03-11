@@ -30,8 +30,7 @@ namespace ga1
             }
             if (crossoverPoint <= 0)
             {
-                rnd = new Random();
-                crossoverPoint = rnd.Next(1, father.Length - 1);
+                crossoverPoint = Program.rnd.Next(1, father.Length - 1);
             }
             if (crossoverPoint >= father.Length)
             {
@@ -50,13 +49,13 @@ namespace ga1
             Array.Copy(motherGens, child2, crossoverPoint);
             Array.Copy(fatherGens, crossoverPoint , child2, crossoverPoint, fatherGens.Length - crossoverPoint);
             Array.Copy(motherGens, crossoverPoint, child1, crossoverPoint, fatherGens.Length - crossoverPoint);
-            IChromosome child1Chromosome = (IChromosome)Activator.CreateInstance(father.GetType());
+          
             IChromosome[] childArray = new IChromosome[2] { ((IChromosome)Activator.CreateInstance(father.GetType())).GenerateFromArray(child1),
                 ((IChromosome)Activator.CreateInstance(father.GetType())).GenerateFromArray(child2) };
             return childArray;
         }
 
         private int crossoverPoint = -1;
-        private Random rnd = new Random();
+        
     }
 }

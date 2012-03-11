@@ -17,5 +17,6 @@ namespace ga1
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new Form1());
         }
+        public static Random rnd = new Random();
     }
 }

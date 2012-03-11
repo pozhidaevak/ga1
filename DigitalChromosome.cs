@@ -9,7 +9,7 @@ namespace ga1
     {
         public DigitalChromosome()
         {
-            rnd = new Random();
+            
         }
 
         public IChromosome[] Crossover(ICrossover crossover, IChromosome mother)
@@ -59,7 +59,7 @@ namespace ga1
             {
                 throw new Exception("Chromosome length must be possitive number");
             }
-            gens = Enumerable.Range(1, length).OrderBy(i=>rnd.Next()).ToArray();   
+            gens = Enumerable.Range(1, length).OrderBy(i=>Program.rnd.Next()).ToArray();   
         }
 
         public override String ToString()
@@ -73,6 +73,5 @@ namespace ga1
         }
 
         private int[] gens;
-        private Random rnd;
     }
 }
