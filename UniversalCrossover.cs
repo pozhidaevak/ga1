@@ -40,6 +40,10 @@ namespace ga1
             {
                 throw new Exception("Parents' has different types of chromosomes");
             }
+            if (mask.Length < father.Length)
+            {
+                throw new Exception("Mask too short");
+            }
 
             dynamic fatherGens = father.ToArray();
             dynamic motherGens = mother.ToArray();
