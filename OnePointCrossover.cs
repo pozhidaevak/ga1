@@ -7,7 +7,10 @@ namespace ga1
 {
     class OnePointCrossover : ICrossover
     {
-        
+        /// <summary>
+        /// Creates instanse of OnePointCrossover
+        /// </summary>
+        /// <param name="crossoverPoint">possition of crossover. if not possitive, then ranndom. if bigger then chromosome.length -1 then crossoverPoint % (father.Length) + 1  </param>
         public OnePointCrossover(int crossoverPoint = -1)
         {
             this.crossoverPoint = crossoverPoint;
@@ -34,7 +37,7 @@ namespace ga1
             }
             if (crossoverPoint >= father.Length)
             {
-                crossoverPoint = crossoverPoint % (father.Length - 1) + 1;
+                crossoverPoint = crossoverPoint % (father.Length) + 1;
             }
 
 
