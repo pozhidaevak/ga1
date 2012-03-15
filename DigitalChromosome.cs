@@ -59,7 +59,7 @@ namespace ga1
             {
                 throw new Exception("Chromosome length must be possitive number");
             }
-            gens = Enumerable.Range(1, length).OrderBy(i=>Program.rnd.Next()).ToArray();   
+            gens = Enumerable.Range(1, length).OrderBy(i=>Program.rnd.Next()).ToArray(); //generates shuffled array. items from 1 to length
         }
 
         public override String ToString()
@@ -68,6 +68,7 @@ namespace ga1
             foreach (int elem in gens)
             {
                 result += elem.ToString();
+                result += " ";
             }
             return result;
         }
