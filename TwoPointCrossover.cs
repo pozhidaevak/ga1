@@ -17,7 +17,7 @@ namespace ga1
         /// <param name="point2">second point of two point crossover</param>
         /// <param name="length">length of cromosome</param>
         /// <remarks>if points are not possitive, then use random points</remarks>
-        public TwoPointCrossover(int point1, int point2, int length) : base(l
+        public TwoPointCrossover(int point1, int point2, int length) : base(length)
         {
             if (length <= 0)
             {
