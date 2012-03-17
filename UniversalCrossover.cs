@@ -19,12 +19,21 @@ namespace ga1
             {
                 throw new Exception("Length must be possitive");
             }
-            byte[] arr = new byte[Convert.ToInt32(Math.Ceiling((double)length / 8.0))];
-            Program.rnd.NextBytes(arr);
-            mask = new BitArray(arr);
+         
+            mask = new BitArray(length);
             mask.Length = length;   
         }
+        public BitArray RandomizeMask()
+        {
+            int length = mask.Length;
+            byte[] arr = new byte[Convert.ToInt32(Math.Ceiling((double)Mask.Length / 8.0))];
+            Program.rnd.NextBytes(arr);
+            mask = new BitArray(arr);
+            mask.Length = length;
+            return Mask;
+        }
         public BitArray Mask { get { return mask; } }
+
         public IChromosome[] Crossover(IChromosome father, IChromosome mother)
         {
             if (father == null || mother == null)
