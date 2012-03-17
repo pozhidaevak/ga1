@@ -19,9 +19,15 @@ namespace ga1
         /// <remarks>if points are not possitive, then use random points</remarks>
         public TwoPointCrossover(int point1, int point2, int length) : base(length)
         {
-            if (length <= 0)
+            if (point1 > point2)
             {
-                throw new ArgumentOutOfRangeException("length", length, "length of array must be possitive");
+                this.point2 = point1;
+                this.point1 = point2;
+            }
+            else
+            {
+                this.point1 = point1;
+                this.point2 = point2;
             }
         }
         private int point1, point2, length;
