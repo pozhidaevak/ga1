@@ -8,7 +8,7 @@ namespace ga1
 {
     class UniversalCrossover : ICrossover
     {
-        private BitArray mask;
+        protected BitArray mask;
         public UniversalCrossover(BitArray mask)
         {
             this.mask = new BitArray(mask);
@@ -34,7 +34,7 @@ namespace ga1
         }
         public BitArray Mask { get { return mask; } }
 
-        public IChromosome[] Crossover(IChromosome father, IChromosome mother)
+        public virtual IChromosome[] Crossover(IChromosome father, IChromosome mother)
         {
             if (father == null || mother == null)
             {
