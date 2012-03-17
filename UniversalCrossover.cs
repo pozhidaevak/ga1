@@ -17,7 +17,7 @@ namespace ga1
         {
             if (length <= 0)
             {
-                throw new Exception("Length must be possitive");
+                throw new ArgumentOutOfRangeException("length", length, "length of array must be possitive");
             }
          
             mask = new BitArray(length);
