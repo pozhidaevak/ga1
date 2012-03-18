@@ -16,7 +16,7 @@ namespace ga1
         /// <param name="point1">First point of two point crossover. from 1 to length - 1</param>
         /// <param name="point2">second point of two point crossover.  from 1 to length - 1</param>
         /// <param name="length">length of cromosome</param>
-        /// <remarks>if points are not possitive, then use random points</remarks>
+        /// <remarks>if points are not possitive, then use random points. if bigger then length-1 -- take modulo</remarks>
         public TwoPointCrossover(int point1, int point2, int length) : base(length)
         {
             if (point1 > point2)
@@ -32,8 +32,8 @@ namespace ga1
         }
         public override IChromosome[] Crossover(IChromosome father, IChromosome mother)
         {
-            CheckPoint(ref point1);
-            CheckPoint(ref point2);
+            CrossoverTools.CheckPoint(ref point1,base.mask.Length);
+            CrossoverTools.CheckPoint(ref point2, base.mask.Length);
 
             if (point2 < point1)
             {
@@ -51,22 +51,7 @@ namespace ga1
             return base.Crossover(father, mother);
         }
 
-        /// <summary>
-        /// Check point value
-        /// </summary>
-        /// <remarks> if point value not possitive, then randomize point. if point value more or equal length, then mod point value</remarks>
-        /// <param name="point">point value</param>
-        private void CheckPoint(ref int point)
-        {
-            if (point >= base.mask.Length)
-            {
-                point = point % (base.mask.Length - 1) + 1;
-            }
-            else if (point <= 0)
-            {
-                point = Program.rnd.Next(1, base.mask.Length);
-            }
-        }
+        
         private int point1, point2;
         public int Point1
         {
