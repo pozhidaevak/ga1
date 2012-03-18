@@ -5,7 +5,7 @@ using System.Text;
 
 namespace ga1
 {
-    interface IChromosome
+    public interface IChromosome<T>
     {
         /// <summary>
         /// Generate random chromosome
@@ -22,7 +22,7 @@ namespace ga1
         /// <remarks><para>The method clones the chromosome returning the exact copy of it.</para>
         /// </remarks>
         /// 
-        IChromosome Clone();
+        IChromosome<T> Clone();
 
         /// <summary>
         /// Crossover two chromosomes
@@ -30,7 +30,7 @@ namespace ga1
         /// <param name="crossover">Crossover Operation</param>
         /// <param name="mother">AnotherChromosome</param>
         /// <returns>Children array</returns>
-        IChromosome[] Crossover(ICrossover crossover, IChromosome mother);
+        IChromosome<T>[] Crossover(ICrossover<T> crossover, IChromosome<T> mother);
 
         /// <summary>
         /// Generates chromosome from Array
@@ -38,13 +38,13 @@ namespace ga1
         /// <remarks>For different chromosomes types use different Array types. See realizations...</remarks>
         /// <param name="gens">Array of "gens" to create chromosome</param>
         /// <returns>new chrmomosome</returns>
-        IChromosome GenerateFromArray(Array gens);
+        IChromosome<T> GenerateFromArray(Array gens);
 
         /// <summary>
         /// Use it if you need to see array of "gens"
         /// </summary>
         /// <returns>array of gens</returns>
-        Array ToArray();
+        T[] ToArray();
 
         /// <summary>
         /// String representation of chromosome
@@ -57,5 +57,6 @@ namespace ga1
         /// Length -- number of gens
         /// </summary>
         int Length { get; }
+
     }
 }
