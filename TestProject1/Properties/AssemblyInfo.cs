@@ -2,25 +2,25 @@
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 
-// Управление общими сведениями о сборке осуществляется с помощью 
-// набора атрибутов. Измените значения этих атрибутов, чтобы изменить сведения,
-// связанные со сборкой.
-[assembly: AssemblyTitle("ga1")]
+// Общие сведения об этой сборке предоставляются следующим набором 
+// атрибутов. Отредактируйте значения этих атрибутов, чтобы изменить
+// общие сведения об этой сборке.
+[assembly: AssemblyTitle("TestProject1")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Microsoft")]
-[assembly: AssemblyProduct("ga1")]
+[assembly: AssemblyProduct("TestProject1")]
 [assembly: AssemblyCopyright("Copyright © Microsoft 2012")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
-// Параметр ComVisible со значением FALSE делает типы в сборке невидимыми 
-// для COM-компонентов.  Если требуется обратиться к типу в этой сборке через 
-// COM, задайте атрибуту ComVisible значение TRUE для этого типа.
+// Установка значения False в параметре ComVisible делает типы в этой сборке невидимыми 
+// для компонентов COM.  Если необходимо обратиться к типу в этой сборке через 
+// COM, следует установить атрибут ComVisible в TRUE для этого типа.
 [assembly: ComVisible(false)]
 
 // Следующий GUID служит для идентификации библиотеки типов, если этот проект будет видимым для COM
-[assembly: Guid("0af8093f-a084-49af-9a53-0b582416cade")]
+[assembly: Guid("dfa02a98-ad6f-493e-9392-6ca30fbc44ef")]
 
 // Сведения о версии сборки состоят из следующих четырех значений:
 //
@@ -31,8 +31,5 @@ using System.Runtime.InteropServices;
 //
 // Можно задать все значения или принять номер построения и номер редакции по умолчанию, 
 // используя "*", как показано ниже:
-// [assembly: AssemblyVersion("1.0.*")]
 [assembly: AssemblyVersion("1.0.0.0")]
 [assembly: AssemblyFileVersion("1.0.0.0")]
-
-[assembly: System.Runtime.CompilerServices.InternalsVisibleTo("ga1Test")]
