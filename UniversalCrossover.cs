@@ -6,7 +6,7 @@ using System.Collections;
 
 namespace ga1
 {
-    class UniversalCrossover : ICrossover
+    public class UniversalCrossover<T> : ICrossover<T>
     {
         protected BitArray mask;
         public UniversalCrossover(BitArray mask)
@@ -34,7 +34,7 @@ namespace ga1
         }
         public BitArray Mask { get { return mask; } }
 
-        public virtual IChromosome[] Crossover(IChromosome father, IChromosome mother)
+        public virtual IChromosome<T>[] Crossover(IChromosome<T> father, IChromosome<T> mother)
         {
             CrossoverTools.CheckChromosomes(father, mother);
             if (mask.Length < father.Length)
@@ -42,11 +42,11 @@ namespace ga1
                 throw new Exception("Mask too short");
             }
 
-            dynamic fatherGens = father.ToArray();
-            dynamic motherGens = mother.ToArray();
+            T[] fatherGens = father.ToArray();
+            T[] motherGens = mother.ToArray();
 
-            dynamic child1 = Array.CreateInstance(fatherGens.GetType().GetElementType(), father.Length);
-            dynamic child2 = Array.CreateInstance(fatherGens.GetType().GetElementType(), father.Length);
+            T[] child1 = new T[father.Length];
+            T[] child2 = new T[father.Length];
 
             for (int i = 0; i < fatherGens.Length; ++i)
             {
@@ -54,8 +54,8 @@ namespace ga1
                 child2[i] = mask[i] ? fatherGens[i] : motherGens[i];
             }
 
-            IChromosome[] childArray = new IChromosome[2] { ((IChromosome)Activator.CreateInstance(father.GetType())).GenerateFromArray(child1),
-                ((IChromosome)Activator.CreateInstance(father.GetType())).GenerateFromArray(child2) };
+            IChromosome<T>[] childArray = new IChromosome<T>[2] { ((IChromosome<T>)Activator.CreateInstance(father.GetType())).GenerateFromArray(child1),
+                ((IChromosome<T>)Activator.CreateInstance(father.GetType())).GenerateFromArray(child2) };
             return childArray;
 
         }

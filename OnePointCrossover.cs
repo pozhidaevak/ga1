@@ -5,7 +5,7 @@ using System.Text;
 
 namespace ga1 //бициллин
 {
-    class OnePointCrossover : ICrossover
+    public class OnePointCrossover<T> : ICrossover<T>
     {
         /// <summary>
         /// Creates instanse of OnePointCrossover
@@ -16,7 +16,7 @@ namespace ga1 //бициллин
             this.crossoverPoint = crossoverPoint;
         }
        
-        public IChromosome[] Crossover(IChromosome father, IChromosome mother)
+        public IChromosome<T>[] Crossover(IChromosome<T> father, IChromosome<T> mother)
         {
             CrossoverTools.CheckChromosomes(father, mother);
 
@@ -42,8 +42,8 @@ namespace ga1 //бициллин
             Array.Copy(fatherGens, crossoverPoint , child2, crossoverPoint, fatherGens.Length - crossoverPoint);
             Array.Copy(motherGens, crossoverPoint, child1, crossoverPoint, fatherGens.Length - crossoverPoint);
           
-            IChromosome[] childArray = new IChromosome[2] { ((IChromosome)Activator.CreateInstance(father.GetType())).GenerateFromArray(child1),
-                ((IChromosome)Activator.CreateInstance(father.GetType())).GenerateFromArray(child2) };
+            IChromosome<T>[] childArray = new IChromosome<T>[2] { ((IChromosome<T>)Activator.CreateInstance(father.GetType())).GenerateFromArray(child1),
+                ((IChromosome<T>)Activator.CreateInstance(father.GetType())).GenerateFromArray(child2) };
             return childArray;
         }
 
