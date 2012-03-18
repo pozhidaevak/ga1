@@ -5,26 +5,26 @@ using System.Text;
 
 namespace ga1
 {
-    class DigitalChromosome : IChromosome
+    public class DigitalChromosome : IChromosome<int>
     {
         public DigitalChromosome()
         {
             
         }
 
-        public IChromosome[] Crossover(ICrossover crossover, IChromosome mother)
+        public IChromosome<int>[] Crossover(ICrossover<int> crossover, IChromosome<int> mother)
         {
             return crossover.Crossover(this, mother);
         }
 
-        public IChromosome Clone()
+        public IChromosome<int> Clone()
         {
             DigitalChromosome clone = new DigitalChromosome();
             clone.GenerateFromArray(this.ToArray());
             return clone;
         }
 
-        public Array ToArray()
+        public int[] ToArray()
         {
             return gens;
         }
@@ -37,7 +37,7 @@ namespace ga1
             }
         }
 
-        public IChromosome GenerateFromArray(Array gens)
+        public IChromosome<int> GenerateFromArray(Array gens)
         {
             if (gens == null)
             {
@@ -74,5 +74,22 @@ namespace ga1
         }
 
         private int[] gens;
+        static public bool operator ==(DigitalChromosome lhs, DigitalChromosome rhs)
+        {
+            return lhs.gens.SequenceEqual(rhs.gens);
+        }
+        static public bool operator !=(DigitalChromosome lhs, DigitalChromosome rhs)
+        {
+            return !lhs.gens.SequenceEqual(rhs.gens);
+        }
+        public override bool Equals(object obj)
+        {
+            return obj.GetType() == this.GetType() || this == (DigitalChromosome)obj;
+        }
+        public override int GetHashCode()
+        {
+            throw new NotImplementedException("DigitalChromosome.GetHashCode");
+            return base.GetHashCode();
+        }
     }
 }
