@@ -36,19 +36,7 @@ namespace ga1
 
         public virtual IChromosome[] Crossover(IChromosome father, IChromosome mother)
         {
-            if (father == null || mother == null)
-            {
-                throw new Exception("virgin birth will be implemented in next version..."); // ;-)
-            }
-
-            if (father.Length != mother.Length)
-            {
-                throw new Exception("Parents' chromosomes has different length");
-            }
-            if (father.GetType() != mother.GetType())
-            {
-                throw new Exception("Parents' has different types of chromosomes");
-            }
+            CrossoverTools.CheckChromosomes(father, mother);
             if (mask.Length < father.Length)
             {
                 throw new Exception("Mask too short");

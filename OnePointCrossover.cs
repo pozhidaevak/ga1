@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace ga1
+namespace ga1 //бициллин
 {
     class OnePointCrossover : ICrossover
     {
@@ -18,19 +18,8 @@ namespace ga1
        
         public IChromosome[] Crossover(IChromosome father, IChromosome mother)
         {
-            if (father == null || mother == null)
-            {
-                throw new Exception("virgin birth will be implemented in next version..."); // ;-)
-            }
-            
-            if (father.Length != mother.Length)
-            {
-                throw new Exception("Parents' chromosomes has different length");
-            }
-            if (father.GetType() != mother.GetType())
-            {
-                throw new Exception("Parents' has different types of chromosomes");
-            }
+            CrossoverTools.CheckChromosomes(father, mother);
+
             if (crossoverPoint <= 0)
             {
                 crossoverPoint = Program.rnd.Next(1, father.Length);
