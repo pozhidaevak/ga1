@@ -5,7 +5,7 @@ using System.Text;
 
 namespace ga1
 {
-    interface ICrossover
+    public interface ICrossover<T>
     {
         /// <summary>
         /// Crossover two chromosomes
@@ -13,6 +13,6 @@ namespace ga1
         /// <param name="father">"father" chromosome</param>
         /// <param name="mother">"mother" chromosome</param>
         /// <returns>children array</returns>
-        IChromosome[] Crossover(IChromosome father, IChromosome mother);
+        IChromosome<T>[] Crossover(IChromosome<T> father, IChromosome<T> mother);
     }
 }
