@@ -5,7 +5,7 @@ using System.Text;
 
 namespace ga1
 {
-    static class CrossoverTools
+    public static class CrossoverTools
     {
         /// <summary>
         /// Check point value
@@ -30,7 +30,7 @@ namespace ga1
         /// </summary>
         /// <param name="father">first chromosome</param>
         /// <param name="mother">second chromosome</param>
-        public static void CheckChromosomes(IChromosome father, IChromosome mother)
+        public static void CheckChromosomes<T>(IChromosome<T> father, IChromosome<T> mother)
         {
             if (father == null || mother == null)
             {
