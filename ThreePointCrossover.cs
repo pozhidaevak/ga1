@@ -5,7 +5,7 @@ using System.Text;
 
 namespace ga1
 {
-    class ThreePointCrossover:UniversalCrossover, ICrossover
+    public class ThreePointCrossover<T>:UniversalCrossover<T>, ICrossover<T>
     {
         public ThreePointCrossover(int[] points, int length)
             : base(length)
@@ -17,7 +17,7 @@ namespace ga1
             Points = points.OrderBy(x => x).ToArray();
         }
 
-        public override IChromosome[] Crossover(IChromosome father, IChromosome mother)
+        public override IChromosome<T>[] Crossover(IChromosome<T> father, IChromosome<T> mother)
         {
             for (int i = 0; i < Points.Length; ++i)
             {

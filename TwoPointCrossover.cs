@@ -8,7 +8,7 @@ namespace ga1
     /// <summary>
     /// Implements two point crossover by using UniversalCrossover
     /// </summary>
-    class TwoPointCrossover : UniversalCrossover, ICrossover
+    public class TwoPointCrossover<T> : UniversalCrossover<T>, ICrossover<T>
     {
         /// <summary>
         /// 
@@ -30,7 +30,7 @@ namespace ga1
                 this.point2 = point2;
             }
         }
-        public override IChromosome[] Crossover(IChromosome father, IChromosome mother)
+        public override IChromosome<T>[] Crossover(IChromosome<T> father, IChromosome<T> mother)
         {
             CrossoverTools.CheckPoint(ref point1,base.mask.Length);
             CrossoverTools.CheckPoint(ref point2, base.mask.Length);
