@@ -7,7 +7,7 @@ using System.Diagnostics;
 
 namespace ga1
 {
-    class OnePointOrderCrossover<T> : ICrossover<T>
+    public class OnePointOrderCrossover<T> : ICrossover<T>
     {
         public OnePointOrderCrossover(int point)
         {
@@ -25,53 +25,64 @@ namespace ga1
             {
                 Point = Point % (father.Length - 1) + 1;
             }
-            dynamic fatherArr = father.ToArray();
-            dynamic motherArr = mother.ToArray();
-            //if(!Enumerable.SequenceEqual(fatherArr,fatherArr.Distinct()) ||
-            //    !Enumerable.SequenceEqual(motherArr,motherArr.Distinct()))
-            //{
-            //    throw new ArgumentOutOfRangeException("father",father,"order crossover works only with unique chromosomes");
-            //}
-            dynamic child1 = Array.CreateInstance(fatherArr.GetType().GetElementType(), father.Length);
-            dynamic child2 = Array.CreateInstance(fatherArr.GetType().GetElementType(), father.Length);
+            T[] fatherArr = father.ToArray();
+            T[] motherArr = mother.ToArray();
+            if(!Enumerable.SequenceEqual(fatherArr,fatherArr.Distinct()) ||
+                !Enumerable.SequenceEqual(motherArr,motherArr.Distinct()))
+            {
+                throw new ArgumentOutOfRangeException("father",father,"order crossover works only with unique chromosomes");
+            }
+            T[] child1 = new T[father.Length];// Array.CreateInstance(fatherArr.GetType().GetElementType(), father.Length);
+            T[] child2 = new T[father.Length];//Array.CreateInstance(fatherArr.GetType().GetElementType(), father.Length);
 
+            //copy first parts of Parents to children
             Array.Copy(fatherArr, child1, Point);
             Array.Copy(motherArr, child2, Point);
-            
-            int[] test ={1}; //TODO: delete this
-            //fatherArr = fatherArr.Skip(Point).Concat(fatherArr.Take(Point)).ToArray(); // make Point the first element(circular shift array)
-            //motherArr = motherArr.Skip(Point).Concat(motherArr.Take(Point)).ToArray();
-            fatherArr = CrossoverTools.RotateLeft(fatherArr, Point);
-            motherArr = CrossoverTools.RotateLeft(motherArr, Point);
+
+            // making Point the first element(circular shift array left)
+            fatherArr = fatherArr.Skip(Point).Concat(fatherArr.Take(Point)).ToArray(); 
+            motherArr = motherArr.Skip(Point).Concat(motherArr.Take(Point)).ToArray();
+            //fatherArr = CrossoverTools.RotateLeft(fatherArr, Point);
+            //motherArr = CrossoverTools.RotateLeft(motherArr, Point);
             
             //adding unique elements from another parent(in order from Point)
-            Array subChild = Array.CreateInstance(fatherArr.GetType().GetElementType(), Point);
-            int childInd = Point;
-            Array.Copy(child1, subChild, Point);
-            for(int i = 0; i <= fatherArr.Length; ++i)
-            {
-                if(!Array.Exists(subChild,motherArr[i]))
-                {
-                    child1[childInd] = motherArr[i];
-                    ++childInd;
-                }
-            }
-            Debug.Assert(childInd == fatherArr.Length,"first child"); //
+            //Array subChild = Array.CreateInstance(fatherArr.GetType().GetElementType(), Point);
+            //int childInd = Point;
+            //Array.Copy(child1, subChild, Point);
+            //for(int i = 0; i <= fatherArr.Length; ++i)
+            //{
+                
+                //if(!child1.Take(Point).Contains(motherArr[i]))
+                //{
+                //    child1[childInd] = motherArr[i];
+                //    ++childInd;
+                //}
+            //}
 
-            childInd =Point;
+            //Calculating second part of child1 chromosmoe
+            T[] childAddition = motherArr.Where(x => !child1.Take(Point).Contains(x)).ToArray();
+            Debug.Assert(childAddition.Length == fatherArr.Length - Point,"first child");
+            Array.Copy(childAddition, 0, child1, Point, father.Length - Point);
+
+            //Calculating second part of child2 chromosmoe
+            childAddition = fatherArr.Where(x => !child2.Take(Point).Contains(x)).ToArray();
+            Debug.Assert(childAddition.Length == fatherArr.Length - Point, "first child");
+            Array.Copy(childAddition, 0, child2, Point, father.Length - Point);
+
+            //childInd =Point;
            
-            Array.Copy(child2, subChild, Point);
-            for(int i = 0; i <= fatherArr.Length; ++i)
-            {
-                if(!Array.Exists(subChild,fatherArr[i]))
-                {
-                    child2[childInd] = fatherArr[i];
-                    ++childInd;
-                }
-            }
-            Debug.Assert(childInd == fatherArr.Length,"second child"); //child completel
-            IChromosome[] childArray = new IChromosome[2] { ((IChromosome)Activator.CreateInstance(father.GetType())).GenerateFromArray(child1),
-                ((IChromosome)Activator.CreateInstance(father.GetType())).GenerateFromArray(child2) };
+            //Array.Copy(child2, subChild, Point);
+            //for(int i = 0; i <= fatherArr.Length; ++i)
+            //{
+            //    if(!Array.Exists(subChild,fatherArr[i]))
+            //    {
+            //        child2[childInd] = fatherArr[i];
+            //        ++childInd;
+            //    }
+            //}
+            //Debug.Assert(childInd == fatherArr.Length,"second child"); //child completel
+            IChromosome<T>[] childArray = new IChromosome<T>[2] { ((IChromosome<T>)Activator.CreateInstance(father.GetType())).GenerateFromArray(child1),
+                ((IChromosome<T>)Activator.CreateInstance(father.GetType())).GenerateFromArray(child2) };
             return childArray;
 
         }

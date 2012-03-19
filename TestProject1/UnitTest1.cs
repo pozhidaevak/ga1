@@ -53,5 +53,17 @@ namespace TestProject1
             IChromosome<int>[] exp = new IChromosome<int>[2] { new DigitalChromosome().GenerateFromArray(new int[] { 1, 3, 3, 1 }), new DigitalChromosome().GenerateFromArray(new int[] { 4, 2, 2, 4 }) };
             CollectionAssert.AreEqual(res, exp);
         }
+
+        [TestMethod]
+        public void OnePointOrderCrossover()
+        {
+            IChromosome<int> a = new DigitalChromosome().GenerateFromArray(new int[] { 1, 2, 3, 4, 5 });
+            IChromosome<int> b = new DigitalChromosome().GenerateFromArray(new int[] { 5, 4, 3, 2, 1 });
+            OnePointOrderCrossover<int> cross = new OnePointOrderCrossover<int>(2);
+            IChromosome<int>[] res = cross.Crossover(a, b);
+            IChromosome<int>[] exp = new IChromosome<int>[2] { new DigitalChromosome().GenerateFromArray(new int[] { 1, 2, 3, 5, 4 }), new DigitalChromosome().GenerateFromArray(new int[] { 5, 4, 3, 1, 2 }) };
+            CollectionAssert.AreEqual(res, exp);
+        }
+
     }
 }
