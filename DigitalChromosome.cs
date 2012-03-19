@@ -84,7 +84,7 @@ namespace ga1
         }
         public override bool Equals(object obj)
         {
-            return obj.GetType() == this.GetType() || this == (DigitalChromosome)obj;
+            return obj.GetType() == this.GetType() && this == (DigitalChromosome)obj;
         }
         public override int GetHashCode()
         {
