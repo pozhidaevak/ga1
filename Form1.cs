@@ -30,29 +30,30 @@ namespace ga1
 
         private void button1_Click(object sender, EventArgs e)
         {
-            IChromosome chr1 = new DigitalChromosome();
-            IChromosome chr2 = new DigitalChromosome();
-            IChromosome[] childrens; ;
-            switch (comboBox1.SelectedIndex)
-            {
-                case 0: // if selected One-point crossover
-                {
-                    ICrossover cross = new OnePointCrossover(2);
-                    chr1.GenerateFromArray(dataGridView1.Rows[0].Cells.ToString().ToArray());
-                    chr2.GenerateFromArray(dataGridView1.Rows[1].Cells.ToString().ToArray());
-                    childrens = cross.Crossover(chr1, chr2);
-                    dataGridView1.Rows.Add();
-                    dataGridView1[0, dataGridView1.RowCount - 1].Value = "One-point crossover";
-                    dataGridView1.Rows.Add(childrens[0]);
-                    dataGridView1.Rows.Add(childrens[1]);
-                    break;
-                }
-                default:
-                    break;
-            }
-            /*ICrossover cross = new OnePointCrossover(2);
-            IChromosome chr = new DigitalChromosome();
-            IChromosome chr2 = new DigitalChromosome();
+            
+            //IChromosome<T> chr1 = new DigitalChromosome();
+            //IChromosome<T> chr2 = new DigitalChromosome();
+            //IChromosome[] childrens; ;
+            //switch (comboBox1.SelectedIndex)
+            //{
+            //    case 0: // if selected One-point crossover
+            //    {
+            //        ICrossover<T> cross = new OnePointCrossover(2);
+            //        chr1.GenerateFromArray(dataGridView1.Rows[0].Cells.ToString().ToArray());
+            //        chr2.GenerateFromArray(dataGridView1.Rows[1].Cells.ToString().ToArray());
+            //        childrens = cross.Crossover(chr1, chr2);
+            //        dataGridView1.Rows.Add();
+            //        dataGridView1[0, dataGridView1.RowCount - 1].Value = "One-point crossover";
+            //        dataGridView1.Rows.Add(childrens[0]);
+            //        dataGridView1.Rows.Add(childrens[1]);
+            //        break;
+            //    }
+            //    default:
+            //        break;
+            //}
+            /*ICrossover<T> cross = new OnePointCrossover(2);
+            IChromosome<T> chr = new DigitalChromosome();
+            IChromosome<T> chr2 = new DigitalChromosome();
             chr.GenerateFromArray((int [])dataGridView1.Rows[0]);
             chr2.GenerateFromArray(arr2);
 
