@@ -58,6 +58,7 @@
     <Compile Include="ICrossover.cs" />
     <Compile Include="OnePointCrossover.cs" />
     <Compile Include="OnePointOrderCrossover.cs" />
+    <Compile Include="OnePointPMX.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ThreePointCrossover.cs" />

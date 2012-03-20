@@ -76,5 +76,16 @@ namespace TestProject1
             CollectionAssert.AreEqual(res, exp);
         }
 
+        [TestMethod]
+        public void OnePointPMX()
+        {
+            IChromosome<int> a = new DigitalChromosome().GenerateFromArray(new int[] { 1, 2, 3, 4, 5 });
+            IChromosome<int> b = new DigitalChromosome().GenerateFromArray(new int[] { 4, 3, 5, 1, 2 });
+            OnePointPMX<int> cross = new OnePointPMX<int>(3);
+            IChromosome<int>[] res = cross.Crossover(a, b);
+            IChromosome<int>[] exp = new IChromosome<int>[2] { new DigitalChromosome().GenerateFromArray(new int[] { 4, 5, 3, 1, 2}), new DigitalChromosome().GenerateFromArray(new int[] { 1, 3, 2, 4, 5 }) };
+            CollectionAssert.AreEqual(res, exp);
+        }
+
     }
 }
