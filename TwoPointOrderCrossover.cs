@@ -31,6 +31,12 @@ namespace ga1
             T[] fatherArr = father.ToArray();
             T[] motherArr = mother.ToArray();
 
+            //check uniqueness
+            if (!Enumerable.SequenceEqual(fatherArr, fatherArr.Distinct()) ||
+                !Enumerable.SequenceEqual(motherArr, motherArr.Distinct()))
+            {
+                throw new ArgumentOutOfRangeException("father", father, "order crossover works only with unique chromosomes");
+            }
             //initialaize children
             T[] child1 = new T[father.Length];
             T[] child2 = new T[father.Length];
