@@ -55,6 +55,12 @@ namespace ga1
             Array.Copy(temp, 0, array, array.Length - places, places);
             return array;
         }
+        public static void Swap<T>(ref T lhs, ref T rhs)
+        {
+            T temp = lhs;
+            lhs = rhs;
+            rhs = temp;
+        }
 
     }
 }
