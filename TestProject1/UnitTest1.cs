@@ -65,5 +65,16 @@ namespace TestProject1
             CollectionAssert.AreEqual(res, exp);
         }
 
+        [TestMethod]
+        public void TwoPointOrderCrossover()
+        {
+            IChromosome<int> a = new DigitalChromosome().GenerateFromArray(new int[] { 1, 2, 3, 4, 5, 6 });
+            IChromosome<int> b = new DigitalChromosome().GenerateFromArray(new int[] { 2, 4, 5, 1, 6, 3 });
+            TwoPointOrderCrossover<int> cross = new TwoPointOrderCrossover<int>(2,4);
+            IChromosome<int>[] res = cross.Crossover(a, b);
+            IChromosome<int>[] exp = new IChromosome<int>[2] { new DigitalChromosome().GenerateFromArray(new int[] { 1, 2, 4, 3, 5, 6 }), new DigitalChromosome().GenerateFromArray(new int[] { 2, 4, 1, 5, 6, 3 }) };
+            CollectionAssert.AreEqual(res, exp);
+        }
+
     }
 }
