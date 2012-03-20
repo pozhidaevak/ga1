@@ -23,7 +23,7 @@ namespace ga1
             }
             if (Point >= father.Length)
             {
-                Point = Point % (father.Length - 1) + 1;
+                Point = (Point - 1) % (father.Length - 1) + 1;
             }
             T[] fatherArr = father.ToArray();
             T[] motherArr = mother.ToArray();

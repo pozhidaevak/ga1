@@ -26,7 +26,7 @@ namespace ga1 //бициллин
             }
             if (crossoverPoint >= father.Length)
             {
-                crossoverPoint = crossoverPoint % (father.Length - 1) + 1;
+                crossoverPoint = (crossoverPoint - 1) % (father.Length - 1) + 1;
             }
 
 

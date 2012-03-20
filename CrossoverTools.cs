@@ -17,7 +17,7 @@ namespace ga1
         {
             if (point >= length)
             {
-                point = point % (length - 1) + 1;
+                point = (point - 1) % (length - 1) + 1;
             }
             else if (point <= 0)
             {
