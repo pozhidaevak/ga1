@@ -64,6 +64,7 @@
     <Compile Include="ThreePointCrossover.cs" />
     <Compile Include="TwoPointCrossover.cs" />
     <Compile Include="TwoPointOrderCrossover.cs" />
+    <Compile Include="TwoPointPMX.cs" />
     <Compile Include="UniversalCrossover.cs" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>

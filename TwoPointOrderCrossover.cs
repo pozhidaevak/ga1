@@ -37,6 +37,13 @@ namespace ga1
             {
                 throw new ArgumentOutOfRangeException("father", father, "order crossover works only with unique chromosomes");
             }
+
+            //check for equality of gen sets
+            if (!Enumerable.SequenceEqual(fatherArr.OrderBy(x => x), motherArr.OrderBy(x => x)))
+            {
+                throw new ArgumentOutOfRangeException("father", father, "sets of gens in mother and father aren't equal");
+            }
+
             //initialaize children
             T[] child1 = new T[father.Length];
             T[] child2 = new T[father.Length];

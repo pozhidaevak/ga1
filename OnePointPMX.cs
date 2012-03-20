@@ -24,6 +24,19 @@ namespace ga1
             T[] fatherArr = father.ToArray();
             T[] motherArr = mother.ToArray();
 
+            //check uniqueness
+            if (!Enumerable.SequenceEqual(fatherArr, fatherArr.Distinct()) ||
+                !Enumerable.SequenceEqual(motherArr, motherArr.Distinct()))
+            {
+                throw new ArgumentOutOfRangeException("father", father, "order crossover works only with unique chromosomes");
+            }
+
+            //check for equality of gen sets
+            if (!Enumerable.SequenceEqual(fatherArr.OrderBy(x => x), motherArr.OrderBy(x => x)))
+            {
+                throw new ArgumentOutOfRangeException("father", father, "sets of gens in mother and father aren't equal");
+            }
+
             //initialaize children
             T[] child1 = new T[father.Length];
             T[] child2 = new T[father.Length];
@@ -40,8 +53,8 @@ namespace ga1
                 {
                     matchedGenInd1 = Array.FindIndex(child1, x => EqualityComparer<T>.Default.Equals(x, child2[i]));
                     matchedGenInd2 = Array.FindIndex(child2, x => EqualityComparer<T>.Default.Equals(x, child1[i]));
-                    CrossoverTools.Swap<T>(ref child1[matchedGenInd1], ref child2[matchedGenInd2]);
-                    CrossoverTools.Swap<T>(ref child1[i], ref child2[i]);
+                    CrossoverTools.Swap<T>(ref child1[matchedGenInd1], ref child1[i]);
+                    CrossoverTools.Swap<T>(ref child2[matchedGenInd2], ref child2[i]);
                 }
             }
 
