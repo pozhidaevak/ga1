@@ -110,5 +110,17 @@ namespace TestProject1
                 , new DigitalChromosome().GenerateFromArray(new int[] { 6, 2, 4, 4, 5, 1 }) }; 
             CollectionAssert.AreEqual(res, exp);
         }
+
+        [TestMethod]
+        public void GoldenCrossoverTest()
+        {
+            IChromosome<int> a = new DigitalChromosome().GenerateFromArray(new int[] { 1, 2, 3, 4, 5 });
+            IChromosome<int> b = new DigitalChromosome().GenerateFromArray(new int[] { 5, 4, 3, 2, 1 });
+            GoldenCrossover<int> cross = new GoldenCrossover<int>(5);
+            IChromosome<int>[] res = cross.Crossover(a, b);
+            IChromosome<int>[] exp = new IChromosome<int>[2] { new DigitalChromosome().GenerateFromArray(new int[] { 1, 2, 3, 2, 1 }), new DigitalChromosome().GenerateFromArray(new int[] {5, 4, 3, 4, 5 }) };
+            CollectionAssert.AreEqual(res, exp);
+        }
+
     }
 }
