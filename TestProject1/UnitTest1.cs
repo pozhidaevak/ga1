@@ -98,5 +98,17 @@ namespace TestProject1
                 , new DigitalChromosome().GenerateFromArray(new int[] { 4, 5, 2, 1, 3 }) }; // different from ex. because, i do it for rows
             CollectionAssert.AreEqual(res, exp);
         }
+
+        [TestMethod]
+        public void Fibonacci()
+        {
+            IChromosome<int> a = new DigitalChromosome().GenerateFromArray(new int[] { 1, 2, 3, 4, 5, 6 });
+            IChromosome<int> b = new DigitalChromosome().GenerateFromArray(new int[] {6, 5, 4, 3, 2, 1 });
+            FibonacciCrossover<int> cross = new FibonacciCrossover<int>(6);
+            IChromosome<int>[] res = cross.Crossover(a, b);
+            IChromosome<int>[] exp = new IChromosome<int>[2] { new DigitalChromosome().GenerateFromArray(new int[] { 1, 5, 3, 3, 2, 6 })
+                , new DigitalChromosome().GenerateFromArray(new int[] { 6, 2, 4, 4, 5, 1 }) }; 
+            CollectionAssert.AreEqual(res, exp);
+        }
     }
 }
