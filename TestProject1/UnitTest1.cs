@@ -95,7 +95,7 @@ namespace TestProject1
             TwoPointPMX<int> cross = new TwoPointPMX<int>(1, 3);
             IChromosome<int>[] res = cross.Crossover(a, b);
             IChromosome<int>[] exp = new IChromosome<int>[2] { new DigitalChromosome().GenerateFromArray(new int[] { 1, 3, 5, 4, 2 })
-                , new DigitalChromosome().GenerateFromArray(new int[] { 4, 5, 2, 1, 3 }) }; // different from ex. 
+                , new DigitalChromosome().GenerateFromArray(new int[] { 4, 5, 2, 1, 3 }) }; // different from ex. because, i do it for rows
             CollectionAssert.AreEqual(res, exp);
         }
     }
