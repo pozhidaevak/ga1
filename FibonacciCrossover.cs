@@ -20,7 +20,7 @@ namespace ga1
                 base.mask[i]= Array.FindLastIndex(fibArr, x => x <= i) % 2 == 0;
             }
         }
-        public IChromosome<T>[] Crossover(IChromosome<T> father, IChromosome<T> mother)
+        public override IChromosome<T>[] Crossover(IChromosome<T> father, IChromosome<T> mother)
         {
             return base.Crossover(father, mother);
         }
