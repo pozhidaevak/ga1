@@ -16,7 +16,7 @@ namespace ga1 //бициллин
             this.crossoverPoint = crossoverPoint;
         }
        
-        public IChromosome<T>[] Crossover(IChromosome<T> father, IChromosome<T> mother)
+        public virtual IChromosome<T>[] Crossover(IChromosome<T> father, IChromosome<T> mother)
         {
             CrossoverTools.CheckChromosomes(father, mother);
 
