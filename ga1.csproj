@@ -57,6 +57,7 @@
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
     <Compile Include="GoldenCrossover.cs" />
+    <Compile Include="GreedyCrossover.cs" />
     <Compile Include="IChromosome.cs" />
     <Compile Include="ICrossover.cs" />
     <Compile Include="OnePointCrossover.cs" />

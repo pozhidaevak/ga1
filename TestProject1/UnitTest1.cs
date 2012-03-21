@@ -145,5 +145,22 @@ namespace TestProject1
             CollectionAssert.AreEqual(res, exp);
         }
 
+        [TestMethod]
+        public void GreedyCrossoverTest()
+        {
+            IChromosome<int> a = new DigitalChromosome().GenerateFromArray(new int[] { 4, 2, 3, 1 });
+            IChromosome<int> b = new DigitalChromosome().GenerateFromArray(new int[] { 1, 4, 3, 2 });
+            int[,] matrix = new int[4, 4]
+            {
+                { 0, 2, 3, 4},
+                { 1, 0, 2, 3},
+                { 1, 2, 0, 5},
+                { 3, 7, 6, 0}
+            };
+            GreedyCrossover cross = new GreedyCrossover(4,2,matrix);
+            IChromosome<int>[] res = cross.Crossover(a, b);
+            IChromosome<int>[] exp = new IChromosome<int>[2] { new DigitalChromosome().GenerateFromArray(new int[] { 4, 3, 1, 2 }), new DigitalChromosome().GenerateFromArray(new int[] { 2, 1, 4, 3 }) };
+            CollectionAssert.AreEqual(res, exp);
+        }
     }
 }
