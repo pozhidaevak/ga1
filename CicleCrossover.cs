@@ -29,6 +29,12 @@ namespace ga1
                 throw new ArgumentOutOfRangeException("father", father, "order crossover works only with unique chromosomes");
             }
 
+            //check for equality of gen sets
+            if (!Enumerable.SequenceEqual(fatherGens.OrderBy(x => x), motherGens.OrderBy(x => x)))
+            {
+                throw new ArgumentOutOfRangeException("father", father, "sets of gens in mother and father aren't equal");
+            }
+
             //gens than was in cicle
             bool[] usedGens = new bool[base.mask.Length];
             T[] currentParent = fatherGens; //cicle iterations starts on it's items
