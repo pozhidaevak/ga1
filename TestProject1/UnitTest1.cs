@@ -122,5 +122,28 @@ namespace TestProject1
             CollectionAssert.AreEqual(res, exp);
         }
 
+
+        [TestMethod]
+        public void CicleCrossoverTest()
+        {
+            IChromosome<int> a = new DigitalChromosome().GenerateFromArray(new int[] { 1, 2, 3, 4, 5 });
+            IChromosome<int> b = new DigitalChromosome().GenerateFromArray(new int[] { 5, 4, 3, 2, 1 });
+            CicleCrossover<int> cross = new CicleCrossover<int>(5);
+            IChromosome<int>[] res = cross.Crossover(a, b);
+            IChromosome<int>[] exp = new IChromosome<int>[2] { new DigitalChromosome().GenerateFromArray(new int[] { 1, 4, 3, 2, 5 }), new DigitalChromosome().GenerateFromArray(new int[] { 5, 2, 3, 4, 1 }) };
+            CollectionAssert.AreEqual(res, exp);
+        }
+
+        [TestMethod]
+        public void CicleCrossoverTest2()
+        {
+            IChromosome<int> a = new DigitalChromosome().GenerateFromArray(new int[] { 1, 2, 3, 4, 5, 6 });
+            IChromosome<int> b = new DigitalChromosome().GenerateFromArray(new int[] { 2, 4, 5, 1, 6, 3 });
+            CicleCrossover<int> cross = new CicleCrossover<int>(6);
+            IChromosome<int>[] res = cross.Crossover(a, b);
+            IChromosome<int>[] exp = new IChromosome<int>[2] { new DigitalChromosome().GenerateFromArray(new int[] { 1, 2, 5, 4, 6, 3 }), new DigitalChromosome().GenerateFromArray(new int[] { 2, 4, 3, 1, 5, 6 }) };
+            CollectionAssert.AreEqual(res, exp);
+        }
+
     }
 }

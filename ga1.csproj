@@ -46,6 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CicleCrossover.cs" />
     <Compile Include="CrossoverTools.cs" />
     <Compile Include="DigitalChromosome.cs" />
     <Compile Include="FibonacciCrossover.cs" />
