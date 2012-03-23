@@ -46,30 +46,36 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CicleCrossover.cs" />
+    <Compile Include="BinaryChromosome.cs" />
+    <Compile Include="Crossover\CicleCrossover.cs" />
     <Compile Include="CrossoverTools.cs" />
     <Compile Include="DigitalChromosome.cs" />
-    <Compile Include="FibonacciCrossover.cs" />
+    <Compile Include="Mutation\EasyMutation.cs" />
+    <Compile Include="Crossover\FibonacciCrossover.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
-    <Compile Include="GoldenCrossover.cs" />
-    <Compile Include="GreedyCrossover.cs" />
+    <Compile Include="Crossover\GoldenCrossover.cs" />
+    <Compile Include="Crossover\GreedyCrossover.cs" />
     <Compile Include="IChromosome.cs" />
-    <Compile Include="ICrossover.cs" />
-    <Compile Include="OnePointCrossover.cs" />
-    <Compile Include="OnePointOrderCrossover.cs" />
-    <Compile Include="OnePointPMX.cs" />
+    <Compile Include="Crossover\ICrossover.cs" />
+    <Compile Include="Mutation\IMutation.cs" />
+    <Compile Include="Crossover\OnePointCrossover.cs" />
+    <Compile Include="Crossover\OnePointOrderCrossover.cs" />
+    <Compile Include="Crossover\OnePointPMX.cs" />
+    <Compile Include="Mutation\MutationTools.cs" />
+    <Compile Include="Mutation\OnePointSwapMutation.cs" />
+    <Compile Include="Mutation\SwapMutation.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ThreePointCrossover.cs" />
-    <Compile Include="TwoPointCrossover.cs" />
-    <Compile Include="TwoPointOrderCrossover.cs" />
-    <Compile Include="TwoPointPMX.cs" />
-    <Compile Include="UniversalCrossover.cs" />
+    <Compile Include="Crossover\ThreePointCrossover.cs" />
+    <Compile Include="Crossover\TwoPointCrossover.cs" />
+    <Compile Include="Crossover\TwoPointOrderCrossover.cs" />
+    <Compile Include="Crossover\TwoPointPMX.cs" />
+    <Compile Include="Crossover\UniversalCrossover.cs" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>

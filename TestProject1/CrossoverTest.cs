@@ -8,7 +8,7 @@ using ga1;
 namespace TestProject1
 {
     [TestClass]
-    public class UnitTest1
+    public class CrossoverTest
     {
         [TestMethod]
         public void OnePointCrossoverTest()
