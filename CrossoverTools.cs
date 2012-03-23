@@ -8,7 +8,7 @@ namespace ga1
     public static class CrossoverTools
     {
         /// <summary>
-        /// Check point value
+        /// Check point value in [1,length)
         /// </summary>
         /// <remarks> if point value not possitive, then randomize point. if point value more or equal length, then mod point value</remarks>
         /// <param name="point">point value</param>
