@@ -48,6 +48,13 @@ namespace ga1 //бициллин
         }
 
         private int crossoverPoint = -1;
+        public int Point
+        {
+            get
+            {
+                return crossoverPoint;
+            }
+        }
         
     }
 }

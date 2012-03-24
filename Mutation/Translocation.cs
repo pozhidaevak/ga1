@@ -53,5 +53,34 @@ namespace ga1
         }
 
         private int point1, point2, point3, point4;
+        public int Point1
+        {
+            get
+            {
+                return point1;
+            }
+        }
+        public int Point2
+        {
+            get
+            {
+                return point2;
+            }
+        }
+        public int Point3
+        {
+            get
+            {
+                return point3;
+            }
+        }
+
+        public int Point4
+        {
+            get
+            {
+                return point4;
+            }
+        }
     }
 }

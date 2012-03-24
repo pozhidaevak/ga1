@@ -26,5 +26,12 @@ namespace ga1
             return ((IChromosome<bool>)Activator.CreateInstance(chromo.GetType())).GenerateFromArray(chromoGens);
         }
         private int point;
+        public int Point
+        {
+            get
+            {
+                return point;
+            }
+        }
     }
 }

@@ -11,19 +11,19 @@ namespace ga1
         public FibonacciCrossover(int length):base(length)
         {
             //generate fibonacci sequence
-            fibArr = fib(0, 1, length).ToArray();
+            FibArr = fib(0, 1, length).ToArray();
 
             //generate mask for UniversalCrossover
             base.mask[0] = false;
             for (int i = 1; i < length; ++i)
             {
-                base.mask[i]= Array.FindLastIndex(fibArr, x => x <= i) % 2 == 0;
+                base.mask[i]= Array.FindLastIndex(FibArr, x => x <= i) % 2 == 0;
             }
         }
         public override IChromosome<T>[] Crossover(IChromosome<T> father, IChromosome<T> mother)
         {
             return base.Crossover(father, mother);
         }
-        private int[] fibArr;
+        public int[] FibArr { get; private set; }
     }
 }

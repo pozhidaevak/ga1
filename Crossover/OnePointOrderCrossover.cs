@@ -86,7 +86,13 @@ namespace ga1
 
         }
         private int point;
-        //public int point { get; private set; }
+        public int Point
+        {
+            get
+            {
+                return point;
+            }
+        }
         
     }
 }

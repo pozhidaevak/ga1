@@ -9,6 +9,10 @@ namespace ga1
     public class UniversalCrossover<T> : ICrossover<T>
     {
         protected BitArray mask;
+        public BitArray Mask
+        {
+            get { return mask; }
+        }
         public UniversalCrossover(BitArray mask)
         {
             this.mask = new BitArray(mask);
@@ -32,8 +36,7 @@ namespace ga1
             mask.Length = length;
             return Mask;
         }
-        public BitArray Mask { get { return mask; } }
-
+        
         public virtual IChromosome<T>[] Crossover(IChromosome<T> father, IChromosome<T> mother)
         {
             CrossoverTools.CheckChromosomes(father, mother);

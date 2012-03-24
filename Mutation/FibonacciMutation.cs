@@ -35,6 +35,20 @@ namespace ga1
         }
         private int[] fibArr;
         private int length;
+        public int[] FibArr
+        {
+            get
+            {
+                return fibArr;
+            }
+        }
 
+        public int Length
+        {
+            get
+            {
+                return length;
+            }
+        }
     }
 }

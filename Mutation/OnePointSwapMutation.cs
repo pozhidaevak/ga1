@@ -17,5 +17,12 @@ namespace ga1
             return swapMutation.Mutate(chromo);
         }
         private int point;
+        public int Point
+        {
+            get
+            {
+                return point;
+            }
+        }
     }
 }

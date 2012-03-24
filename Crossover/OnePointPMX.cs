@@ -64,5 +64,12 @@ namespace ga1
             return childArray;
         }
         private int point;
+        public int Point
+        {
+            get
+            {
+                return point;
+            }
+        }
     }
 }

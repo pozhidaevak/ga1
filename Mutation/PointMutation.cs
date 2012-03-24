@@ -24,5 +24,24 @@ namespace ga1
             return ((IChromosome<bool>)Activator.CreateInstance(chromo.GetType())).GenerateFromArray(chromoGens);
         }
         private double probability;
+        public double Probability
+        {
+            get
+            {
+                return probability;
+            }
+            set
+            {
+                if (value > 1 || value < 0)
+                {
+                    throw new ArgumentOutOfRangeException("probability", probability, "probability must be in [0,1]");
+                }
+                else
+                {
+                    probability = value;
+                }
+
+            }
+        }
     }
 }

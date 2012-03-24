@@ -93,6 +93,32 @@ namespace ga1
             return child;
         }
         private int point1, point2;
+        public int Point1
+        {
+            get
+            {
+                return point1;
+            }
+        }
+        public int Point2
+        {
+            get
+            {
+                return point2;
+            }
+        }
         private int[,] matrix;
+        public int[,] Matrix
+        {
+            get
+            { 
+                return matrix;
+            }
+            set
+            {
+                matrix = value;
+            }
+        }
+
     }
 }
