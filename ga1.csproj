@@ -62,6 +62,7 @@
     <Compile Include="Crossover\GreedyCrossover.cs" />
     <Compile Include="IChromosome.cs" />
     <Compile Include="Crossover\ICrossover.cs" />
+    <Compile Include="Mutation\FibonacciMutation.cs" />
     <Compile Include="Mutation\GoldenMutation.cs" />
     <Compile Include="Mutation\IMutation.cs" />
     <Compile Include="Crossover\OnePointCrossover.cs" />

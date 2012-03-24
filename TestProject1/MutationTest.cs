@@ -58,5 +58,15 @@ namespace TestProject1
             IChromosome<bool> exp = new BinaryChromosome().GenerateFromArray(new bool[] { true, false, true, false, true });
             Assert.AreEqual(exp, res);
         }
+
+        [TestMethod]
+        public void FibonacciMutationTest()
+        {
+            IChromosome<int> a = new DigitalChromosome().GenerateFromArray(new int[] { 12, 13, 14, 15, 16, 17,18,19,20});
+            FibonacciMutation<int> mutation = new FibonacciMutation<int>(9);
+            IChromosome<int> res = mutation.Mutate(a);
+            IChromosome<int> exp = new DigitalChromosome().GenerateFromArray(new int[] { 19,12,13,15,14,17,18,16,20 });
+            Assert.AreEqual(exp, res);
+        }
     }
 }
