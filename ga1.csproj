@@ -62,12 +62,14 @@
     <Compile Include="Crossover\GreedyCrossover.cs" />
     <Compile Include="IChromosome.cs" />
     <Compile Include="Crossover\ICrossover.cs" />
+    <Compile Include="Mutation\GoldenMutation.cs" />
     <Compile Include="Mutation\IMutation.cs" />
     <Compile Include="Crossover\OnePointCrossover.cs" />
     <Compile Include="Crossover\OnePointOrderCrossover.cs" />
     <Compile Include="Crossover\OnePointPMX.cs" />
     <Compile Include="Mutation\MutationTools.cs" />
     <Compile Include="Mutation\OnePointSwapMutation.cs" />
+    <Compile Include="Mutation\PointMutation.cs" />
     <Compile Include="Mutation\SwapMutation.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

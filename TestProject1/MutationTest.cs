@@ -38,5 +38,25 @@ namespace TestProject1
             IChromosome<bool> exp = new BinaryChromosome().GenerateFromArray(new bool[] { true, false, false, true });
             Assert.AreEqual(exp, res);
         }
+
+        [TestMethod]
+        public void GoldenMutationTest()
+        {
+            IChromosome<bool> a = new BinaryChromosome().GenerateFromArray(new bool[] { false, true, false, true, false });
+            GoldenMutation<bool> mutation = new GoldenMutation<bool>(5);
+            IChromosome<bool> res = mutation.Mutate(a);
+            IChromosome<bool> exp = new BinaryChromosome().GenerateFromArray(new bool[] { false, true, true, false, false });
+            Assert.AreEqual(exp, res);
+        }
+
+        [TestMethod]
+        public void PointMutationTest()
+        {
+            IChromosome<bool> a = new BinaryChromosome().GenerateFromArray(new bool[] { false, true, false, true, false });
+            PointMutation mutation = new PointMutation(1);
+            IChromosome<bool> res = mutation.Mutate(a);
+            IChromosome<bool> exp = new BinaryChromosome().GenerateFromArray(new bool[] { true, false, true, false, true });
+            Assert.AreEqual(exp, res);
+        }
     }
 }
