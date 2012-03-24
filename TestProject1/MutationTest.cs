@@ -78,5 +78,25 @@ namespace TestProject1
             IChromosome<int> exp = new DigitalChromosome().GenerateFromArray(new int[] { 12, 13, 14, 17, 16, 15, 18, 19, 20 });
             Assert.AreEqual(exp, res);
         }
+
+        [TestMethod]
+        public void DeletionMutationTest()
+        {
+            IChromosome<int> a = new DigitalChromosome().GenerateFromArray(new int[] { 12, 13, 14, 15, 16, 17, 18, 19, 20 });
+            Deletion<int> mutation = new Deletion<int>(3, 5);
+            IChromosome<int> res = mutation.Mutate(a);
+            IChromosome<int> exp = new DigitalChromosome().GenerateFromArray(new int[] { 12, 13, 14, 18, 19, 20 });
+            Assert.AreEqual(exp, res);
+        }
+
+        [TestMethod]
+        public void TranslocationMutationTest()
+        {
+            IChromosome<int> a = new DigitalChromosome().GenerateFromArray(new int[] { 12, 13, 14, 15, 16, 17, 18, 19, 20 });
+            Translocation<int> mutation = new Translocation<int>(1,2,5,7);
+            IChromosome<int> res = mutation.Mutate(a);
+            IChromosome<int> exp = new DigitalChromosome().GenerateFromArray(new int[] { 12,17, 18, 19, 15, 16, 13, 14, 20 });
+            Assert.AreEqual(exp, res);
+        }
     }
 }
