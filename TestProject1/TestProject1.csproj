@@ -48,6 +48,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="CrossoverTest.cs" />
     <Compile Include="MutationTest.cs" />
+    <Compile Include="SelectionTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ga1.csproj">

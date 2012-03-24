@@ -48,8 +48,11 @@
   <ItemGroup>
     <Compile Include="BinaryChromosome.cs" />
     <Compile Include="Crossover\CicleCrossover.cs" />
-    <Compile Include="CrossoverTools.cs" />
+    <Compile Include="Crossover\CrossoverTools.cs" />
     <Compile Include="DigitalChromosome.cs" />
+    <Compile Include="ISelection.cs" />
+    <Compile Include="Population.cs" />
+    <Compile Include="Mutation\Deletion.cs" />
     <Compile Include="Mutation\EasyMutation.cs" />
     <Compile Include="Crossover\FibonacciCrossover.cs" />
     <Compile Include="Form1.cs">
@@ -73,6 +76,7 @@
     <Compile Include="Mutation\OnePointSwapMutation.cs" />
     <Compile Include="Mutation\PointMutation.cs" />
     <Compile Include="Mutation\SwapMutation.cs" />
+    <Compile Include="Mutation\Translocation.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Crossover\ThreePointCrossover.cs" />
@@ -80,6 +84,7 @@
     <Compile Include="Crossover\TwoPointOrderCrossover.cs" />
     <Compile Include="Crossover\TwoPointPMX.cs" />
     <Compile Include="Crossover\UniversalCrossover.cs" />
+    <Compile Include="RouletteSelection.cs" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
