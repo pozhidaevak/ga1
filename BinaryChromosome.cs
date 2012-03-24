@@ -60,13 +60,13 @@ namespace ga1
             }
             gens = new bool[length];
             for (int i = 0; i < length; ++i )
-                gens[i] = Program.rnd.Next(0,2) == 0 ? false : true; 
+                gens[i] = Program.rnd.Next(0, 2) == 0 ? false : true;
         }
-        static public bool operator ==(BinaryChromosome lhs, BinaryChromosome rhs)
+        public static bool operator ==(BinaryChromosome lhs, BinaryChromosome rhs)
         {
             return lhs.gens.SequenceEqual(rhs.gens);
         }
-        static public bool operator !=(BinaryChromosome lhs, BinaryChromosome rhs)
+        public static bool operator !=(BinaryChromosome lhs, BinaryChromosome rhs)
         {
             return !lhs.gens.SequenceEqual(rhs.gens);
         }
@@ -80,6 +80,5 @@ namespace ga1
             return base.GetHashCode();
         }
         private bool[] gens;
-
     }
 }

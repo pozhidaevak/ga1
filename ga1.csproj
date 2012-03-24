@@ -50,6 +50,7 @@
     <Compile Include="Crossover\CicleCrossover.cs" />
     <Compile Include="Crossover\CrossoverTools.cs" />
     <Compile Include="DigitalChromosome.cs" />
+    <Compile Include="EliteSelection.cs" />
     <Compile Include="ISelection.cs" />
     <Compile Include="Population.cs" />
     <Compile Include="Mutation\Deletion.cs" />
@@ -85,6 +86,7 @@
     <Compile Include="Crossover\TwoPointPMX.cs" />
     <Compile Include="Crossover\UniversalCrossover.cs" />
     <Compile Include="RouletteSelection.cs" />
+    <Compile Include="TornamentSelection.cs" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>

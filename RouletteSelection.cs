@@ -21,7 +21,8 @@ namespace ga1
             {
                 throw new Exception("negative fitness");
             }
-            var map = population.Zip(fitnessArr, (chromo, fit) => new { chromo, fit }).ToList();
+            var map = population.Zip(fitnessArr, (chromo, fit) => new
+            { chromo, fit }).ToList();
             List<IChromosome<T>> outPopulation = new List<IChromosome<T>>();
             for (int i = 0; i < OutLength; ++i)
             {
@@ -47,7 +48,7 @@ namespace ga1
             }
             set
             {
-                if(value <= 0)
+                if (value <= 0)
                 {
                     throw new ArgumentOutOfRangeException("outLength", outLength, " must be possitive");
                 }
@@ -57,6 +58,5 @@ namespace ga1
                 }
             }
         }
-        
     }
 }

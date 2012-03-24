@@ -11,13 +11,14 @@ namespace ga1
     public class TwoPointCrossover<T> : UniversalCrossover<T>, ICrossover<T>
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="point1">First point of two point crossover. from 1 to length - 1</param>
         /// <param name="point2">second point of two point crossover.  from 1 to length - 1</param>
         /// <param name="length">length of cromosome</param>
         /// <remarks>if points are not possitive, then use random points. if bigger then length-1 -- take modulo</remarks>
-        public TwoPointCrossover(int point1, int point2, int length) : base(length)
+        public TwoPointCrossover(int point1, int point2, int length)
+            : base(length)
         {
             if (point1 > point2)
             {
@@ -32,7 +33,7 @@ namespace ga1
         }
         public override IChromosome<T>[] Crossover(IChromosome<T> father, IChromosome<T> mother)
         {
-            CrossoverTools.CheckPoint(ref point1,base.mask.Length);
+            CrossoverTools.CheckPoint(ref point1, base.mask.Length);
             CrossoverTools.CheckPoint(ref point2, base.mask.Length);
 
             if (point2 < point1)
@@ -51,22 +52,27 @@ namespace ga1
             return base.Crossover(father, mother);
         }
 
-        
         private int point1, point2;
         public int Point1
         {
             get
-            { return point1; }
+            {
+                return point1;
+            }
         }
         public int Point2
         {
             get
-            { return point2; }
+            {
+                return point2;
+            }
         }
         public int Length
         {
             get
-            { return base.mask.Length; }
+            {
+                return base.mask.Length;
+            }
         }
     }
 }

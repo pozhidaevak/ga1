@@ -19,10 +19,10 @@ namespace ga1
             CrossoverTools.CheckPoint(ref point, father.Length);
             T[] fatherArr = father.ToArray();
             T[] motherArr = mother.ToArray();
-            if(!Enumerable.SequenceEqual(fatherArr,fatherArr.Distinct()) ||
-                !Enumerable.SequenceEqual(motherArr,motherArr.Distinct()))
+            if (!Enumerable.SequenceEqual(fatherArr, fatherArr.Distinct()) ||
+            !Enumerable.SequenceEqual(motherArr, motherArr.Distinct()))
             {
-                throw new ArgumentOutOfRangeException("father",father,"order crossover works only with unique chromosomes");
+                throw new ArgumentOutOfRangeException("father", father, "order crossover works only with unique chromosomes");
             }
 
             //check for equality of gen sets
@@ -39,7 +39,7 @@ namespace ga1
             Array.Copy(motherArr, child2, point);
 
             // making point the first element(circular shift array left)
-            fatherArr = fatherArr.Skip(point).Concat(fatherArr.Take(point)).ToArray(); 
+            fatherArr = fatherArr.Skip(point).Concat(fatherArr.Take(point)).ToArray();
             motherArr = motherArr.Skip(point).Concat(motherArr.Take(point)).ToArray();
             //fatherArr = CrossoverTools.RotateLeft(fatherArr, point);
             //motherArr = CrossoverTools.RotateLeft(motherArr, point);
@@ -51,16 +51,16 @@ namespace ga1
             //for(int i = 0; i <= fatherArr.Length; ++i)
             //{
                 
-                //if(!child1.Take(point).Contains(motherArr[i]))
-                //{
-                //    child1[childInd] = motherArr[i];
-                //    ++childInd;
-                //}
+            //if(!child1.Take(point).Contains(motherArr[i]))
+            //{
+            //    child1[childInd] = motherArr[i];
+            //    ++childInd;
+            //}
             //}
 
             //Calculating second part of child1 chromosmoe
             T[] childAddition = motherArr.Where(x => !child1.Take(point).Contains(x)).ToArray();
-            Debug.Assert(childAddition.Length == fatherArr.Length - point,"first child");
+            Debug.Assert(childAddition.Length == fatherArr.Length - point, "first child");
             Array.Copy(childAddition, 0, child1, point, father.Length - point);
 
             //Calculating second part of child2 chromosmoe
@@ -81,9 +81,8 @@ namespace ga1
             //}
             //Debug.Assert(childInd == fatherArr.Length,"second child"); //child completel
             IChromosome<T>[] childArray = new IChromosome<T>[2] { ((IChromosome<T>)Activator.CreateInstance(father.GetType())).GenerateFromArray(child1),
-                ((IChromosome<T>)Activator.CreateInstance(father.GetType())).GenerateFromArray(child2) };
+            ((IChromosome<T>)Activator.CreateInstance(father.GetType())).GenerateFromArray(child2) };
             return childArray;
-
         }
         private int point;
         public int Point
@@ -93,6 +92,5 @@ namespace ga1
                 return point;
             }
         }
-        
     }
 }

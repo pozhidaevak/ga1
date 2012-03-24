@@ -40,7 +40,6 @@ namespace ga1
                 {
                     probability = value;
                 }
-
             }
         }
     }

@@ -11,7 +11,10 @@ namespace ga1
         protected BitArray mask;
         public BitArray Mask
         {
-            get { return mask; }
+            get
+            {
+                return mask;
+            }
         }
         public UniversalCrossover(BitArray mask)
         {
@@ -23,9 +26,8 @@ namespace ga1
             {
                 throw new ArgumentOutOfRangeException("length", length, "length of array must be possitive");
             }
-         
             mask = new BitArray(length);
-            mask.Length = length;   
+            mask.Length = length;
         }
         public BitArray RandomizeMask()
         {
@@ -36,7 +38,6 @@ namespace ga1
             mask.Length = length;
             return Mask;
         }
-        
         public virtual IChromosome<T>[] Crossover(IChromosome<T> father, IChromosome<T> mother)
         {
             CrossoverTools.CheckChromosomes(father, mother);
@@ -58,10 +59,8 @@ namespace ga1
             }
 
             IChromosome<T>[] childArray = new IChromosome<T>[2] { ((IChromosome<T>)Activator.CreateInstance(father.GetType())).GenerateFromArray(child1),
-                ((IChromosome<T>)Activator.CreateInstance(father.GetType())).GenerateFromArray(child2) };
+            ((IChromosome<T>)Activator.CreateInstance(father.GetType())).GenerateFromArray(child2) };
             return childArray;
-
         }
-
     }
 }

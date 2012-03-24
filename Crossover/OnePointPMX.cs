@@ -8,7 +8,8 @@ namespace ga1
     /// One point partially mathched crossover
     /// </summary>
     /// <typeparam name="T">Type of gens</typeparam>
-    public class OnePointPMX<T>:ICrossover<T> where T:struct
+    public class OnePointPMX<T> : ICrossover<T>
+        
     {
         public OnePointPMX(int point)
         {
@@ -26,7 +27,7 @@ namespace ga1
 
             //check uniqueness
             if (!Enumerable.SequenceEqual(fatherArr, fatherArr.Distinct()) ||
-                !Enumerable.SequenceEqual(motherArr, motherArr.Distinct()))
+            !Enumerable.SequenceEqual(motherArr, motherArr.Distinct()))
             {
                 throw new ArgumentOutOfRangeException("father", father, "order crossover works only with unique chromosomes");
             }
@@ -49,7 +50,7 @@ namespace ga1
             int matchedGenInd1 = -1, matchedGenInd2 = -1; //indexes of matched gens in child1 and child2 respectivly
             for (int i = point; i < fatherArr.Length; ++i)
             {
-                if (!EqualityComparer<T>.Default.Equals(child1[i],child2[i])) //equivalent to child1[i] != child2[i]
+                if (!EqualityComparer<T>.Default.Equals(child1[i], child2[i])) //equivalent to child1[i] != child2[i]
                 {
                     matchedGenInd1 = Array.FindIndex(child1, x => EqualityComparer<T>.Default.Equals(x, child2[i]));
                     matchedGenInd2 = Array.FindIndex(child2, x => EqualityComparer<T>.Default.Equals(x, child1[i]));
@@ -60,7 +61,7 @@ namespace ga1
 
             //Form children array and return it
             IChromosome<T>[] childArray = new IChromosome<T>[2] { ((IChromosome<T>)Activator.CreateInstance(father.GetType())).GenerateFromArray(child1),
-                ((IChromosome<T>)Activator.CreateInstance(father.GetType())).GenerateFromArray(child2) };
+            ((IChromosome<T>)Activator.CreateInstance(father.GetType())).GenerateFromArray(child2) };
             return childArray;
         }
         private int point;

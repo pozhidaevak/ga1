@@ -9,7 +9,6 @@ namespace ga1
     {
         public DigitalChromosome()
         {
-            
         }
 
         public IChromosome<int>[] Crossover(ICrossover<int> crossover, IChromosome<int> mother)
@@ -59,7 +58,7 @@ namespace ga1
             {
                 throw new Exception("Chromosome length must be possitive number");
             }
-            gens = Enumerable.Range(1, length).OrderBy(i=>Program.rnd.Next()).ToArray(); //generates shuffled array. items from 1 to length
+            gens = Enumerable.Range(1, length).OrderBy(i => Program.rnd.Next()).ToArray(); //generates shuffled array. items from 1 to length
         }
 
         public override String ToString()
@@ -74,11 +73,11 @@ namespace ga1
         }
 
         private int[] gens;
-        static public bool operator ==(DigitalChromosome lhs, DigitalChromosome rhs)
+        public static bool operator ==(DigitalChromosome lhs, DigitalChromosome rhs)
         {
             return lhs.gens.SequenceEqual(rhs.gens);
         }
-        static public bool operator !=(DigitalChromosome lhs, DigitalChromosome rhs)
+        public static bool operator !=(DigitalChromosome lhs, DigitalChromosome rhs)
         {
             return !lhs.gens.SequenceEqual(rhs.gens);
         }

@@ -19,9 +19,12 @@ namespace ga1
             {
                 point = (point - 1) % (length - 1) + 1;
             }
-            else if (point <= 0)
+            else
             {
-                point = Program.rnd.Next(1, length); // [1,length)
+                if (point <= 0)
+                {
+                    point = Program.rnd.Next(1, length); // [1,length)
+                }
             }
         }
 
@@ -61,6 +64,5 @@ namespace ga1
             lhs = rhs;
             rhs = temp;
         }
-
     }
 }

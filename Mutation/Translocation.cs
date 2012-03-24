@@ -19,7 +19,7 @@ namespace ga1
         public IChromosome<T> Mutate(IChromosome<T> chromo)
         {
             if (point1 >= chromo.Length || point2 >= chromo.Length ||
-                point3 >= chromo.Length || point4 >= chromo.Length)
+            point3 >= chromo.Length || point4 >= chromo.Length)
             {
                 throw new ArgumentOutOfRangeException("Translocation: chromo too short");
             }
@@ -46,10 +46,8 @@ namespace ga1
 
             T[] chromoGens = chromo.ToArray();
             chromoGens = chromoGens.Take(point1).Concat(chromoGens.Skip(point3).Take(point4 - point3 + 1)).Concat(chromoGens.Skip(point2 + 1).Take(point3 - point2 - 1))
-                .Concat(chromoGens.Skip(point1).Take(point2 - point1 + 1)).Concat(chromoGens.Skip(point4 + 1)).ToArray();
+            .Concat(chromoGens.Skip(point1).Take(point2 - point1 + 1)).Concat(chromoGens.Skip(point4 + 1)).ToArray();
             return ((IChromosome<T>)Activator.CreateInstance(chromo.GetType())).GenerateFromArray(chromoGens);
-
-            
         }
 
         private int point1, point2, point3, point4;

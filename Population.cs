@@ -7,7 +7,7 @@ namespace ga1
     public  class Population<T>
     {
         public delegate double Fitness(IChromosome<T> chromo);
-        public IChromosome<T> Chromosomes { get; set;}
+        public IChromosome<T> Chromosomes { get; set; }
         public IMutation<T> Mutation { get; set; }
         public ICrossover<T> Crossover { get; set; }
         private double mutationProb;
@@ -27,7 +27,6 @@ namespace ga1
                 {
                     mutationProb = value;
                 }
-
             }
         }
     }

@@ -15,7 +15,6 @@ namespace ga1 //бициллин
         {
             this.crossoverPoint = crossoverPoint;
         }
-       
         public virtual IChromosome<T>[] Crossover(IChromosome<T> father, IChromosome<T> mother)
         {
             CrossoverTools.CheckChromosomes(father, mother);
@@ -43,7 +42,7 @@ namespace ga1 //бициллин
             Array.Copy(motherGens, crossoverPoint, child1, crossoverPoint, fatherGens.Length - crossoverPoint);
           
             IChromosome<T>[] childArray = new IChromosome<T>[2] { ((IChromosome<T>)Activator.CreateInstance(father.GetType())).GenerateFromArray(child1),
-                ((IChromosome<T>)Activator.CreateInstance(father.GetType())).GenerateFromArray(child2) };
+            ((IChromosome<T>)Activator.CreateInstance(father.GetType())).GenerateFromArray(child2) };
             return childArray;
         }
 
@@ -55,6 +54,5 @@ namespace ga1 //бициллин
                 return crossoverPoint;
             }
         }
-        
     }
 }

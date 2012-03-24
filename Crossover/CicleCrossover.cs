@@ -5,11 +5,12 @@ using System.Text;
 
 namespace ga1
 {
-    public class CicleCrossover<T>:UniversalCrossover<T>, ICrossover<T>
+    public class CicleCrossover<T> : UniversalCrossover<T>, ICrossover<T>
     {
         public CicleCrossover(int length)
             : base(length)
-        { }
+        {
+        }
         public override IChromosome<T>[] Crossover(IChromosome<T> father, IChromosome<T> mother)
         {
             //Checking input variables
@@ -24,7 +25,7 @@ namespace ga1
 
             //check uniqueness
             if (!Enumerable.SequenceEqual(fatherGens, fatherGens.Distinct()) ||
-                !Enumerable.SequenceEqual(motherGens, motherGens.Distinct()))
+            !Enumerable.SequenceEqual(motherGens, motherGens.Distinct()))
             {
                 throw new ArgumentOutOfRangeException("father", father, "order crossover works only with unique chromosomes");
             }

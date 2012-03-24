@@ -11,17 +11,14 @@ namespace ga1
         /// Generate random chromosome
         /// </summary>
         /// <param name="length">length of chromosome</param>
-        /// 
         void Generate(int length);
 
 
         /// <summary>
         /// Clone the chromosome.
         /// </summary>
-        /// 
-        /// <remarks><para>The method clones the chromosome returning the exact copy of it.</para>
+        /// <remarks>    <para>The method clones the chromosome returning the exact copy of it.</para>
         /// </remarks>
-        /// 
         IChromosome<T> Clone();
 
         /// <summary>
@@ -57,6 +54,5 @@ namespace ga1
         /// Length -- number of gens
         /// </summary>
         int Length { get; }
-
     }
 }

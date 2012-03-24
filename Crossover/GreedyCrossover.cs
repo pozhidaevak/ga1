@@ -7,11 +7,11 @@ namespace ga1
 {
     public class GreedyCrossover : ICrossover<int>
     {
-        public GreedyCrossover(int point1, int point2, int[,] matrix)
+        public GreedyCrossover(int point1, int point2, int[, ] matrix)
         {
             if (matrix.GetLength(0) != matrix.GetLength(1))
             {
-            	throw new ArgumentOutOfRangeException("matrix",matrix, "matrix must be square");
+                throw new ArgumentOutOfRangeException("matrix", matrix, "matrix must be square");
             }
             this.matrix = matrix;
             this.point1 = point1;
@@ -35,7 +35,7 @@ namespace ga1
 
             //check uniqueness
             if (!Enumerable.SequenceEqual(fatherArr, fatherArr.Distinct()) ||
-                !Enumerable.SequenceEqual(motherArr, motherArr.Distinct()))
+            !Enumerable.SequenceEqual(motherArr, motherArr.Distinct()))
             {
                 throw new ArgumentOutOfRangeException("father", father, "order crossover works only with unique chromosomes");
             }
@@ -46,7 +46,7 @@ namespace ga1
                 throw new ArgumentOutOfRangeException("father", father, "sets of gens in mother and father aren't equal");
             }
             
-             //initialaize children
+            //initialaize children
             int[] child1 = new int[father.Length];
             int[] child2 = new int[father.Length];
 
@@ -55,7 +55,7 @@ namespace ga1
 
             //Form children array and return it
             IChromosome<int>[] childArray = new IChromosome<int>[2] { ((IChromosome<int>)Activator.CreateInstance(father.GetType())).GenerateFromArray(child1),
-                ((IChromosome<int>)Activator.CreateInstance(father.GetType())).GenerateFromArray(child2) };
+            ((IChromosome<int>)Activator.CreateInstance(father.GetType())).GenerateFromArray(child2) };
             return childArray;
         }
         public int CalcFitness(IChromosome<int> chromo)
@@ -64,7 +64,7 @@ namespace ga1
             int res = 0;
             for (int i = 0; i < gens.Length - 1; ++i)
             {
-                res += matrix[i,i+1];
+                res += matrix[i, i + 1];
             }
             return res;
         }
@@ -80,7 +80,7 @@ namespace ga1
                 fatherInd = (Array.FindIndex(father, x => x == child[i - 1]) + 1) % father.Length;
                 motherInd = (Array.FindIndex(mother, x => x == child[i - 1]) + 1) % mother.Length;
                 nextCandidate = matrix[child[i - 1] - 1, father[fatherInd] - 1] <= matrix[child[i - 1] - 1, mother[motherInd] - 1] ? father[fatherInd] : mother[motherInd];
-                if(child.Take(i).Contains(nextCandidate))
+                if (child.Take(i).Contains(nextCandidate))
                 {
                     nextCandidate = 0;
                     do{
@@ -107,11 +107,11 @@ namespace ga1
                 return point2;
             }
         }
-        private int[,] matrix;
-        public int[,] Matrix
+        private int[, ] matrix;
+        public int[, ] Matrix
         {
             get
-            { 
+            {
                 return matrix;
             }
             set
@@ -119,6 +119,5 @@ namespace ga1
                 matrix = value;
             }
         }
-
     }
 }
