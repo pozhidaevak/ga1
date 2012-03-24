@@ -68,5 +68,15 @@ namespace TestProject1
             IChromosome<int> exp = new DigitalChromosome().GenerateFromArray(new int[] { 19,12,13,15,14,17,18,16,20 });
             Assert.AreEqual(exp, res);
         }
+
+        [TestMethod]
+        public void InversionMutationTest()
+        {
+            IChromosome<int> a = new DigitalChromosome().GenerateFromArray(new int[] { 12, 13, 14, 15, 16, 17, 18, 19, 20 });
+            Inversion<int> mutation = new Inversion<int>(3,5);
+            IChromosome<int> res = mutation.Mutate(a);
+            IChromosome<int> exp = new DigitalChromosome().GenerateFromArray(new int[] { 12, 13, 14, 17, 16, 15, 18, 19, 20 });
+            Assert.AreEqual(exp, res);
+        }
     }
 }

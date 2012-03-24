@@ -68,6 +68,7 @@
     <Compile Include="Crossover\OnePointCrossover.cs" />
     <Compile Include="Crossover\OnePointOrderCrossover.cs" />
     <Compile Include="Crossover\OnePointPMX.cs" />
+    <Compile Include="Mutation\Inversion.cs" />
     <Compile Include="Mutation\MutationTools.cs" />
     <Compile Include="Mutation\OnePointSwapMutation.cs" />
     <Compile Include="Mutation\PointMutation.cs" />
