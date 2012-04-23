@@ -58,13 +58,13 @@ namespace ga1
             ((IChromosome<int>)Activator.CreateInstance(father.GetType())).GenerateFromArray(child2) };
             return childArray;
         }
-        public int CalcFitness(IChromosome<int> chromo)
+        public double CalcFitness(IChromosome<int> chromo)
         {
             int[] gens = chromo.ToArray();
             int res = 0;
             for (int i = 0; i < gens.Length - 1; ++i)
             {
-                res += matrix[i, i + 1];
+                res += matrix[gens[i] - 1, gens[i + 1] - 1];
             }
             return res;
         }
