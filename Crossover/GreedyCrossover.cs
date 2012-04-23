@@ -84,8 +84,8 @@ namespace ga1
                 {
                     nextCandidate = 0;
                     do{
-                        //nextCandidate = Program.rnd.Next(1,father.Length + 1);
-                        ++nextCandidate;
+                        nextCandidate = Program.rnd.Next(1,father.Length + 1);
+                        //++nextCandidate;
                     } while(child.Take(i).Contains(nextCandidate));
                 }
                 child[i] = nextCandidate;
