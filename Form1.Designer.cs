@@ -56,6 +56,7 @@
             this.label8 = new System.Windows.Forms.Label();
             this.expCount = new System.Windows.Forms.TextBox();
             this.exportBtn = new System.Windows.Forms.Button();
+            this.answer = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             this.SuspendLayout();
@@ -298,19 +299,28 @@
             // 
             // exportBtn
             // 
-            this.exportBtn.Location = new System.Drawing.Point(18, 275);
+            this.exportBtn.Location = new System.Drawing.Point(557, 393);
             this.exportBtn.Name = "exportBtn";
-            this.exportBtn.Size = new System.Drawing.Size(617, 123);
+            this.exportBtn.Size = new System.Drawing.Size(106, 22);
             this.exportBtn.TabIndex = 20;
             this.exportBtn.Text = "Export to excel";
             this.exportBtn.UseVisualStyleBackColor = true;
             this.exportBtn.Click += new System.EventHandler(this.exportBtn_Click);
+            // 
+            // answer
+            // 
+            this.answer.AutoSize = true;
+            this.answer.Location = new System.Drawing.Point(59, 372);
+            this.answer.Name = "answer";
+            this.answer.Size = new System.Drawing.Size(0, 13);
+            this.answer.TabIndex = 21;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(675, 465);
+            this.Controls.Add(this.answer);
             this.Controls.Add(this.exportBtn);
             this.Controls.Add(this.SaveChromo);
             this.Controls.Add(this.OpenChromo);
@@ -376,6 +386,7 @@
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.TextBox expCount;
         private System.Windows.Forms.Button exportBtn;
+        private System.Windows.Forms.Label answer;
 
 
     }

@@ -115,6 +115,8 @@ namespace ga1
                 Convert.ToDouble(mProb.Text), Convert.ToDouble(cProb.Text));
             maxF = new double[Convert.ToInt32(expCount.Text), Convert.ToInt32(iterCount.Text) + 1];
             avgF= new double[Convert.ToInt32(expCount.Text), Convert.ToInt32(iterCount.Text) + 1];
+            double max = 100500; // Hi to Max ))
+            string bestChromo = null;
             for (int i = 0; i < Convert.ToInt32(expCount.Text); ++i)
             {
                 Trace.WriteLine("experiment #" + (i + 1).ToString());
@@ -137,9 +139,16 @@ namespace ga1
                     Trace.WriteLine("best fitness chromo = " + pop.GetMaxChromo());
                     Trace.Unindent();
                 }
+                if (Math.Round(1 / pop.GetMaxFitness()) < max)
+                {
+                    max = Math.Round(1 / pop.GetMaxFitness());
+                    bestChromo = pop.GetMaxChromo();
+                }
                 Trace.Unindent();
 
+
             }
+            answer.Text = "Best Path: " + bestChromo + "Path Length" + max.ToString();
            
 
 
