@@ -52,7 +52,7 @@ namespace ga1
             return this;
         }
 
-        public void Generate(int length)
+        public IChromosome<bool> Generate(int length)
         {
             if (length <= 0)
             {
@@ -61,6 +61,7 @@ namespace ga1
             gens = new bool[length];
             for (int i = 0; i < length; ++i )
                 gens[i] = Program.rnd.Next(0, 2) == 0 ? false : true;
+            return this;
         }
         public static bool operator ==(BinaryChromosome lhs, BinaryChromosome rhs)
         {

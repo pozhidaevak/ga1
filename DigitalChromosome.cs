@@ -52,13 +52,14 @@ namespace ga1
             return this;
         }
 
-        public void Generate(int length)
+        public IChromosome<int> Generate(int length)
         {
             if (length <= 0)
             {
                 throw new Exception("Chromosome length must be possitive number");
             }
             gens = Enumerable.Range(1, length).OrderBy(i => Program.rnd.Next()).ToArray(); //generates shuffled array. items from 1 to length
+            return this;
         }
 
         public override String ToString()

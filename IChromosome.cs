@@ -11,7 +11,7 @@ namespace ga1
         /// Generate random chromosome
         /// </summary>
         /// <param name="length">length of chromosome</param>
-        void Generate(int length);
+        IChromosome<T> Generate(int length);
 
 
         /// <summary>
