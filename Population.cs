@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Diagnostics;
 
 namespace ga1
 {
@@ -112,7 +113,9 @@ namespace ga1
                 {
                     if (Program.rnd.NextDouble() >= crossoverProb)
                     {
+                        Trace.WriteLine("Crossover: " + forSelection[i].ToString() + " with " + forSelection[j].ToString());
                         childs.AddRange(Crossover.Crossover(forSelection[i], forSelection[j]));
+                        Trace.WriteLine("Children: " + childs[childs.Count - 2].ToString() + " and " + childs[childs.Count - 1].ToString());
                     }
                 }
             }
@@ -127,7 +130,9 @@ namespace ga1
             {
                 if (Program.rnd.NextDouble() >= mutationProb)
                 {
+                    Trace.WriteLine("Mutate " + afterCrossover[i].ToString());
                     afterCrossover[i] = Mutation.Mutate(afterCrossover[i]);
+                    Trace.WriteLine("Result " + afterCrossover[i].ToString());
                 }
             }
 
