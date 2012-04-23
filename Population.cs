@@ -72,7 +72,7 @@ namespace ga1
         }
         
         
-        public Population(int chromoLength, int populationSize, IMutation<T> _mutation,
+        public Population( IMutation<T> _mutation,
             ICrossover<T> _crossover, ISelection<T> _sel1, ISelection<T> _sel2, Population<T>.Fitness _fitness, double _mutationProb = 0.1, double _crossoverProb = 0.5, IChromosome<T>[] _chromo = null)
         {
             Crossover =_crossover;
@@ -82,23 +82,23 @@ namespace ga1
             CrossoverProb = _crossoverProb;
             Selection1 = _sel1;
             Selection2 = _sel2;
-            if (_chromo == null)
-            {
-                Chromosomes = new IChromosome<T>[populationSize];
-                for (int i = 0; i < populationSize; ++i)
-                {
-                    if (typeof(T) == typeof(int))
-                    {
-                        Chromosomes[i] = (IChromosome<T>)new DigitalChromosome().Generate(chromoLength);
-                    }
-                }
-            }
-            else
+            if (_chromo != null)
             {
                 Chromosomes = _chromo;
             }
+            
         }
-
+        public void Generate(int chromoLength, int populationSize)
+        {
+            Chromosomes = new IChromosome<T>[populationSize];
+            for (int i = 0; i < populationSize; ++i)
+            {
+                if (typeof(T) == typeof(int))
+                {
+                    Chromosomes[i] = (IChromosome<T>)new DigitalChromosome().Generate(chromoLength);
+                }
+            }
+        }
         public IChromosome<T>[] Iteration()
         {
             //selection 1
