@@ -6,15 +6,19 @@ namespace ga1
 {
     public class TornamentSelection<T> : ISelection<T>
     {
-        public TornamentSelection(int outLength, int tornSize)
+        public TornamentSelection( int tornSize)
         {
-            OutLength = outLength;
+           
             TornSize = tornSize;
         }
-        public IChromosome<T>[] Select(IChromosome<T>[] population, Population<T>.Fitness fitness)
+        public IChromosome<T>[] Select(IChromosome<T>[] population, Population<T>.Fitness fitness, int outLength)
         {
-            if (population.Length <= OutLength || population.Length <= tornSize * 2)
+            if (population.Length <= outLength || population.Length <= tornSize * 2)
             {
+                if (population.Length == outLength)
+                {
+                    return population;
+                }
                 throw new ArgumentOutOfRangeException("Population to small");
             }
             IChromosome<T>[] outPopulation = new IChromosome<T>[outLength];
@@ -24,25 +28,8 @@ namespace ga1
             }
             return outPopulation;
         }
-        private int outLength, tornSize;
-        public int OutLength
-        {
-            get
-            {
-                return outLength;
-            }
-            set
-            {
-                if ( value <= 0)
-                {
-                    throw new ArgumentOutOfRangeException("outLength", outLength, " outLength must be possitive");
-                }
-                else
-                {
-                    outLength = value;
-                }
-            }
-        }
+        private int  tornSize;
+        
         public int TornSize
         {
             get
