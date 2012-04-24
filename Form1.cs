@@ -72,6 +72,7 @@ namespace ga1
 
         private void Go_Click(object sender, EventArgs e)
         {
+            //initialize var
             int cLength = Convert.ToInt32(chromoLength.Text);
             EliteSelection<int> sel2 = new EliteSelection<int>(0);
             RouletteSelection<int> sel1 = new RouletteSelection<int>();
@@ -81,10 +82,13 @@ namespace ga1
                 Convert.ToDouble(mProb.Text), Convert.ToDouble(cProb.Text));
             maxF = new double[Convert.ToInt32(expCount.Text), Convert.ToInt32(iterCount.Text) + 1];
             avgF = new double[Convert.ToInt32(expCount.Text), Convert.ToInt32(iterCount.Text) + 1];
-            double max = 100500; // Hi to Max ))
+            double min = 100500; // Hi to Max ))
             string bestChromo = null;
+
+            //experiments
             for (int i = 0; i < Convert.ToInt32(expCount.Text); ++i)
             {
+                //initial chromosomes
                 Trace.WriteLine("experiment #" + (i + 1).ToString());
                 Trace.Indent();
                 ChromosomesFromArray();
@@ -93,6 +97,8 @@ namespace ga1
                 Trace.WriteLine("initial best fitness = " + Math.Round((1 / pop.GetMaxFitness())).ToString());
                 Trace.WriteLine("initial avg fitness = " + (1 / pop.GetPopulationFitness()).ToString());
                 Trace.WriteLine("initia;best fitness chromo = " + pop.GetMaxChromo());
+
+                // iterations
                 for (int j = 0; j < Convert.ToInt32(iterCount.Text); ++j)
                 {
                     Trace.WriteLine("iteration #" + (j + 1).ToString());
@@ -105,14 +111,14 @@ namespace ga1
                     Trace.WriteLine("best fitness chromo = " + pop.GetMaxChromo());
                     Trace.Unindent();
                 }
-                if (Math.Round(1 / pop.GetMaxFitness()) < max)
+                if (Math.Round(1 / pop.GetMaxFitness()) < min)
                 {
-                    max = Math.Round(1 / pop.GetMaxFitness());
+                    min = Math.Round(1 / pop.GetMaxFitness());
                     bestChromo = pop.GetMaxChromo();
                 }
                 Trace.Unindent();
             }
-            answer.Text = "Best Path: " + bestChromo + "Path Length" + max.ToString();
+            answer.Text = "Best Path: " + bestChromo + "Path Length" + min.ToString();
         }
 
         private void ChromosomesFromArray()
@@ -126,15 +132,13 @@ namespace ga1
             }
         }
 
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-        }
-
         private void GeneratePop_Click(object sender, EventArgs e)
         {
-            int cLength = Convert.ToInt32(chromoLength.Text);
-            int pLength = Convert.ToInt32(popSize.Text);
+            int cLength = Convert.ToInt32(chromoLength.Text);  //chromosome length
+            int pLength = Convert.ToInt32(popSize.Text); //population length
             chromosomes = new int[pLength, cLength];
+
+            //generate random chromo and assign it with dataGridView2
             for (int i = 0; i < pLength; ++i)
             {
                 System.Buffer.BlockCopy(Enumerable.Range(1, cLength).OrderBy(x => Program.rnd.Next()).ToArray(),
@@ -221,7 +225,7 @@ namespace ga1
                 ((Excel.SeriesCollection)maxChart.Chart.SeriesCollection()).NewSeries().Values = xlWSheet.Range[xlWSheet.Cells[i + 3, 2], xlWSheet.Cells[i + 3, maxF.GetLength(1) + 1]];
             ((Excel.Series)maxChart.Chart.SeriesCollection(1)).XValues = xlWSheet.Range[xlWSheet.Cells[2, 2], xlWSheet.Cells[2, maxF.GetLength(1) + 1]];
 
-            //max f by exp
+            //min f by exp
             Excel.ChartObject maxChart2 = (Excel.ChartObject)xlCharts.Add(10, 17 * (maxF.GetLength(0) + 2) + 310, 300, 250);
 
             maxChart2.Chart.ChartType = Excel.XlChartType.xlLine;
@@ -253,7 +257,7 @@ namespace ga1
                 ((Excel.SeriesCollection)avgChart.Chart.SeriesCollection()).NewSeries().Values = xlWSheet.Range[xlWSheet.Cells[i + 3, 2 + columnDelta], xlWSheet.Cells[i + 3, maxF.GetLength(1) + 1 + columnDelta]];
             ((Excel.Series)avgChart.Chart.SeriesCollection(1)).XValues = xlWSheet.Range[xlWSheet.Cells[2, 2 + columnDelta], xlWSheet.Cells[2, maxF.GetLength(1) + 1 + columnDelta]];
 
-            //max f by exp
+            //min f by exp
             Excel.ChartObject avgChart2 = (Excel.ChartObject)xlCharts.Add(10 + columnDelta * 50, 17 * (maxF.GetLength(0) + 2) + 310, 300, 250);
 
             avgChart2.Chart.ChartType = Excel.XlChartType.xlLine;
