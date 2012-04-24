@@ -29,28 +29,6 @@ namespace ga1
         public Form1()
         {
             InitializeComponent();
-            Trace.WriteLine("test");
-            EliteSelection<int> sel2 = new EliteSelection<int>(0);
-            RouletteSelection<int> sel1 = new RouletteSelection<int>();
-            dataGridView1.DataSource = new ArrayDataView(matrix);
-            matrix = new int[4, 4]
-            {
-                { 0, 2, 3, 4},
-                { 1, 0, 2, 3},
-                { 1, 2, 0, 5},
-                { 3, 7, 6, 0}
-            };
-
-
-            matrix[3, 3] = 1;
-            int[,] matrix3 = new int[5, 5];
-            Array.Copy(matrix, matrix3, matrix.Length);
-            dataGridView1.DataSource = new ArrayDataView(matrix3);
-            GreedyCrossover cros = new GreedyCrossover(-1, -1, matrix);
-            GoldenMutation<int> mut = new GoldenMutation<int>(4);
-
-
-
         }
 
 
