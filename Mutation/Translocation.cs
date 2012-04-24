@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 
 namespace ga1
@@ -16,6 +15,7 @@ namespace ga1
             this.point3 = point3;
             this.point4 = point4;
         }
+
         public IChromosome<T> Mutate(IChromosome<T> chromo)
         {
             if (point1 >= chromo.Length || point2 >= chromo.Length ||
@@ -33,7 +33,7 @@ namespace ga1
             }
             if (point3 < 0)
             {
-                point3 =  Program.rnd.Next(point2 + 1, chromo.Length);
+                point3 = Program.rnd.Next(point2 + 1, chromo.Length);
             }
             if (point4 < 0)
             {
@@ -51,6 +51,7 @@ namespace ga1
         }
 
         private int point1, point2, point3, point4;
+
         public int Point1
         {
             get
@@ -58,6 +59,7 @@ namespace ga1
                 return point1;
             }
         }
+
         public int Point2
         {
             get
@@ -65,6 +67,7 @@ namespace ga1
                 return point2;
             }
         }
+
         public int Point3
         {
             get

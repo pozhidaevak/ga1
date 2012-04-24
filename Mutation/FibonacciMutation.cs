@@ -8,9 +8,10 @@ namespace ga1
     {
         static Func<int, int, int, IEnumerable<int>> fib = (n, m, cap) => n + m > cap ? Enumerable.Empty<int>()
             : Enumerable.Repeat(n + m, 1).Concat(fib(m, n + m, cap));
+
         public FibonacciMutation(int length)
         {
-            if(length <= 0)
+            if (length <= 0)
             {
                 throw new ArgumentOutOfRangeException("length", length, "length must be positive");
             }
@@ -33,8 +34,10 @@ namespace ga1
             }
             return ((IChromosome<T>)Activator.CreateInstance(chromo.GetType())).GenerateFromArray(chromoGens);
         }
+
         private int[] fibArr;
         private int length;
+
         public int[] FibArr
         {
             get

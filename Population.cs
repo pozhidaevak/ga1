@@ -1,20 +1,28 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Diagnostics;
+using System.Linq;
 
 namespace ga1
 {
-    public  class Population<T>
+    public class Population<T>
     {
         public delegate double Fitness(IChromosome<T> chromo);
-        public Fitness fitness {get; set;}
+
+        public Fitness fitness { get; set; }
+
         public IChromosome<T>[] Chromosomes { get; set; }
+
         public IMutation<T> Mutation { get; set; }
+
         public ICrossover<T> Crossover { get; set; }
-        public ISelection<T> Selection1 {get; set; }
-        public ISelection<T> Selection2 { get; set;}
+
+        public ISelection<T> Selection1 { get; set; }
+
+        public ISelection<T> Selection2 { get; set; }
+
         private double selectionK = 0.5;
+
         public double SelectionK
         {
             get
@@ -33,7 +41,9 @@ namespace ga1
                 }
             }
         }
+
         private double mutationProb;
+
         public double MutationProb
         {
             get
@@ -52,7 +62,9 @@ namespace ga1
                 }
             }
         }
+
         private double crossoverProb;
+
         public double CrossoverProb
         {
             get
@@ -71,12 +83,11 @@ namespace ga1
                 }
             }
         }
-        
-        
-        public Population( IMutation<T> _mutation,
+
+        public Population(IMutation<T> _mutation,
             ICrossover<T> _crossover, ISelection<T> _sel1, ISelection<T> _sel2, Population<T>.Fitness _fitness, double _mutationProb = 0.1, double _crossoverProb = 0.5, IChromosome<T>[] _chromo = null)
         {
-            Crossover =_crossover;
+            Crossover = _crossover;
             Mutation = _mutation;
             fitness = _fitness;
             MutationProb = _mutationProb;
@@ -87,8 +98,8 @@ namespace ga1
             {
                 Chromosomes = _chromo;
             }
-            
         }
+
         public void Generate(int chromoLength, int populationSize)
         {
             Chromosomes = new IChromosome<T>[populationSize];
@@ -100,13 +111,14 @@ namespace ga1
                 }
             }
         }
+
         public IChromosome<T>[] Iteration()
         {
             //selection 1
             IChromosome<T>[] forSelection = Selection1.Select(Chromosomes, fitness, (int)(Math.Round(Chromosomes.Length * selectionK)));
 
             //crossover
-            List<IChromosome<T>> childs= new List<IChromosome<T>>();
+            List<IChromosome<T>> childs = new List<IChromosome<T>>();
             for (int i = 0; i < forSelection.Length; ++i)
             {
                 for (int j = i + 1; j < forSelection.Length; ++j)
@@ -142,7 +154,7 @@ namespace ga1
 
         public double GetPopulationFitness()
         {
-            return Chromosomes.Sum(x => fitness(x))/Chromosomes.Length;
+            return Chromosomes.Sum(x => fitness(x)) / Chromosomes.Length;
         }
 
         public double GetMaxFitness()

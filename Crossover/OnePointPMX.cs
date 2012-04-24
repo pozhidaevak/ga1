@@ -9,12 +9,12 @@ namespace ga1
     /// </summary>
     /// <typeparam name="T">Type of gens</typeparam>
     public class OnePointPMX<T> : ICrossover<T>
-        
     {
         public OnePointPMX(int point)
         {
             this.point = point;
         }
+
         public IChromosome<T>[] Crossover(IChromosome<T> father, IChromosome<T> mother)
         {
             //Checking input variables
@@ -64,7 +64,9 @@ namespace ga1
             ((IChromosome<T>)Activator.CreateInstance(father.GetType())).GenerateFromArray(child2) };
             return childArray;
         }
+
         private int point;
+
         public int Point
         {
             get

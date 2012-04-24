@@ -1,16 +1,15 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 
 namespace ga1
 {
     public class TornamentSelection<T> : ISelection<T>
     {
-        public TornamentSelection( int tornSize)
+        public TornamentSelection(int tornSize)
         {
-           
             TornSize = tornSize;
         }
+
         public IChromosome<T>[] Select(IChromosome<T>[] population, Population<T>.Fitness fitness, int outLength)
         {
             if (population.Length <= outLength || population.Length <= tornSize * 2)
@@ -28,8 +27,9 @@ namespace ga1
             }
             return outPopulation;
         }
-        private int  tornSize;
-        
+
+        private int tornSize;
+
         public int TornSize
         {
             get

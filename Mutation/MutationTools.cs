@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-
-namespace ga1
+﻿namespace ga1
 {
     public class MutationTools
     {

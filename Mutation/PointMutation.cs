@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 
 namespace ga1
 {
@@ -23,7 +21,9 @@ namespace ga1
             }
             return ((IChromosome<bool>)Activator.CreateInstance(chromo.GetType())).GenerateFromArray(chromoGens);
         }
+
         private double probability;
+
         public double Probability
         {
             get

@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 
 namespace ga1
 {
@@ -11,6 +10,7 @@ namespace ga1
             : base(length)
         {
         }
+
         public override IChromosome<T>[] Crossover(IChromosome<T> father, IChromosome<T> mother)
         {
             //Checking input variables

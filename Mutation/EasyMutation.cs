@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
 namespace ga1
 {
@@ -11,6 +8,7 @@ namespace ga1
         {
             this.point = point;
         }
+
         public IChromosome<bool> Mutate(IChromosome<bool> chromo)
         {
             if (point >= chromo.Length)
@@ -25,7 +23,9 @@ namespace ga1
             chromoGens[point] = !chromoGens[point];
             return ((IChromosome<bool>)Activator.CreateInstance(chromo.GetType())).GenerateFromArray(chromoGens);
         }
+
         private int point;
+
         public int Point
         {
             get

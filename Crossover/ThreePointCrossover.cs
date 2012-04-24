@@ -1,11 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 
 namespace ga1
 {
-    public class ThreePointCrossover<T>:UniversalCrossover<T>, ICrossover<T>
+    public class ThreePointCrossover<T> : UniversalCrossover<T>, ICrossover<T>
     {
         public ThreePointCrossover(int[] points, int length)
             : base(length)
@@ -30,6 +28,7 @@ namespace ga1
             }
             return base.Crossover(father, mother);
         }
+
         public int[] Points { get; private set; }
     }
 }

@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
 namespace ga1
 {
@@ -12,7 +9,6 @@ namespace ga1
         /// </summary>
         /// <param name="length">length of chromosome</param>
         IChromosome<T> Generate(int length);
-
 
         /// <summary>
         /// Clone the chromosome.

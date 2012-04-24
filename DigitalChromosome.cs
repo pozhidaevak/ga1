@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 
 namespace ga1
 {
@@ -74,18 +72,22 @@ namespace ga1
         }
 
         private int[] gens;
+
         public static bool operator ==(DigitalChromosome lhs, DigitalChromosome rhs)
         {
             return lhs.gens.SequenceEqual(rhs.gens);
         }
+
         public static bool operator !=(DigitalChromosome lhs, DigitalChromosome rhs)
         {
             return !lhs.gens.SequenceEqual(rhs.gens);
         }
+
         public override bool Equals(object obj)
         {
             return obj.GetType() == this.GetType() && this == (DigitalChromosome)obj;
         }
+
         public override int GetHashCode()
         {
             throw new NotImplementedException("DigitalChromosome.GetHashCode");

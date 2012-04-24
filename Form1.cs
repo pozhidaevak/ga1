@@ -1,23 +1,14 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
 using System.Diagnostics;
-using System.Windows.Forms;
-using System.Runtime.Serialization;
 using System.IO;
+using System.Linq;
 using System.Runtime.Serialization.Formatters.Binary;
+using System.Windows.Forms;
 using Mommo.Data;
 using Excel = Microsoft.Office.Interop.Excel;
 
-
 namespace ga1
 {
-
-
     public partial class Form1 : Form
     {
         private Population<int> pop;
@@ -26,12 +17,11 @@ namespace ga1
         int[,] chromosomes = new int[0, 0];
         double[,] maxF;
         double[,] avgF;
+
         public Form1()
         {
             InitializeComponent();
         }
-
-
 
         private void generateButton_Click(object sender, EventArgs e)
         {
@@ -82,8 +72,6 @@ namespace ga1
 
         private void Go_Click(object sender, EventArgs e)
         {
-
-
             int cLength = Convert.ToInt32(chromoLength.Text);
             EliteSelection<int> sel2 = new EliteSelection<int>(0);
             RouletteSelection<int> sel1 = new RouletteSelection<int>();
@@ -92,7 +80,7 @@ namespace ga1
             pop = new Population<int>(mut, cros, sel1, sel2, x => 1 / cros.CalcFitness(x),
                 Convert.ToDouble(mProb.Text), Convert.ToDouble(cProb.Text));
             maxF = new double[Convert.ToInt32(expCount.Text), Convert.ToInt32(iterCount.Text) + 1];
-            avgF= new double[Convert.ToInt32(expCount.Text), Convert.ToInt32(iterCount.Text) + 1];
+            avgF = new double[Convert.ToInt32(expCount.Text), Convert.ToInt32(iterCount.Text) + 1];
             double max = 100500; // Hi to Max ))
             string bestChromo = null;
             for (int i = 0; i < Convert.ToInt32(expCount.Text); ++i)
@@ -100,7 +88,7 @@ namespace ga1
                 Trace.WriteLine("experiment #" + (i + 1).ToString());
                 Trace.Indent();
                 ChromosomesFromArray();
-                maxF[i, 0] = Math.Round(1/pop.GetMaxFitness());
+                maxF[i, 0] = Math.Round(1 / pop.GetMaxFitness());
                 avgF[i, 0] = 1 / pop.GetPopulationFitness();
                 Trace.WriteLine("initial best fitness = " + Math.Round((1 / pop.GetMaxFitness())).ToString());
                 Trace.WriteLine("initial avg fitness = " + (1 / pop.GetPopulationFitness()).ToString());
@@ -123,13 +111,8 @@ namespace ga1
                     bestChromo = pop.GetMaxChromo();
                 }
                 Trace.Unindent();
-
-
             }
             answer.Text = "Best Path: " + bestChromo + "Path Length" + max.ToString();
-           
-
-
         }
 
         private void ChromosomesFromArray()
@@ -138,25 +121,24 @@ namespace ga1
             int[] buffer = new int[chromosomes.GetLength(1)];
             for (int i = 0; i < chromosomes.GetLength(0); ++i)
             {
-                System.Buffer.BlockCopy(chromosomes, chromosomes.GetLength(1) * i * sizeof(int), buffer, 0, chromosomes.GetLength(1) *sizeof(int));
+                System.Buffer.BlockCopy(chromosomes, chromosomes.GetLength(1) * i * sizeof(int), buffer, 0, chromosomes.GetLength(1) * sizeof(int));
                 pop.Chromosomes[i] = new DigitalChromosome().GenerateFromArray(buffer);
             }
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-
         }
 
         private void GeneratePop_Click(object sender, EventArgs e)
         {
             int cLength = Convert.ToInt32(chromoLength.Text);
             int pLength = Convert.ToInt32(popSize.Text);
-            chromosomes = new int[pLength,cLength];
+            chromosomes = new int[pLength, cLength];
             for (int i = 0; i < pLength; ++i)
             {
                 System.Buffer.BlockCopy(Enumerable.Range(1, cLength).OrderBy(x => Program.rnd.Next()).ToArray(),
-                    0, chromosomes, i * sizeof(int) * cLength, cLength* sizeof(int));
+                    0, chromosomes, i * sizeof(int) * cLength, cLength * sizeof(int));
             }
             dataGridView2.DataSource = new ArrayDataView(chromosomes);
         }
@@ -184,6 +166,7 @@ namespace ga1
             }
             dataGridView2.DataSource = new ArrayDataView(chromosomes);
         }
+
         private void releaseObject(object obj)
         {
             try
@@ -201,9 +184,9 @@ namespace ga1
                 GC.Collect();
             }
         }
+
         private void exportBtn_Click(object sender, EventArgs e)
         {
-            
             //if (maxF == null || avgF == null || maxF.Length <= 0 || avgF.Length <= 0)
             //    throw new Exception("nothing to export");
             Excel.Application xlAp = new Excel.Application();
@@ -212,7 +195,7 @@ namespace ga1
             Excel.Worksheet xlWSheet = (Excel.Worksheet)xlWBook.Worksheets.get_Item(1);
 
             //maxF
-            xlWSheet.Cells[1,1] = "Max fitness";
+            xlWSheet.Cells[1, 1] = "Max fitness";
 
             //add experiment numbers for maxF
             for (int i = 0; i < maxF.GetLength(1); ++i)
@@ -220,7 +203,7 @@ namespace ga1
 
             //add iteration numberts
             for (int i = 0; i < maxF.GetLength(0); ++i)
-                xlWSheet.Cells[i + 3, 1] = (i+1).ToString();
+                xlWSheet.Cells[i + 3, 1] = (i + 1).ToString();
 
             //add maxFData
             for (int i = 0; i < maxF.GetLength(0); ++i)
@@ -229,14 +212,13 @@ namespace ga1
                     xlWSheet.Cells[i + 3, j + 2] = maxF[i, j];
             }
 
-           
             //f by step
             Excel.ChartObjects xlCharts = (Excel.ChartObjects)xlWSheet.ChartObjects();
             Excel.ChartObject maxChart = (Excel.ChartObject)xlCharts.Add(10, 17 * (maxF.GetLength(0) + 2), 300, 250);
 
             maxChart.Chart.ChartType = Excel.XlChartType.xlLine;
             for (int i = 0; i < maxF.GetLength(0); ++i)
-            ((Excel.SeriesCollection)maxChart.Chart.SeriesCollection()).NewSeries().Values = xlWSheet.Range[xlWSheet.Cells[i+3,2 ], xlWSheet.Cells[i + 3, maxF.GetLength(1) + 1]];
+                ((Excel.SeriesCollection)maxChart.Chart.SeriesCollection()).NewSeries().Values = xlWSheet.Range[xlWSheet.Cells[i + 3, 2], xlWSheet.Cells[i + 3, maxF.GetLength(1) + 1]];
             ((Excel.Series)maxChart.Chart.SeriesCollection(1)).XValues = xlWSheet.Range[xlWSheet.Cells[2, 2], xlWSheet.Cells[2, maxF.GetLength(1) + 1]];
 
             //max f by exp
@@ -244,11 +226,10 @@ namespace ga1
 
             maxChart2.Chart.ChartType = Excel.XlChartType.xlLine;
             maxChart2.Chart.SetSourceData(xlWSheet.Range[xlWSheet.Cells[3, maxF.GetLength(1) + 1], xlWSheet.Cells[maxF.GetLength(0) + 3, maxF.GetLength(1) + 1]]);
-               
 
             //AvgF
             int columnDelta = maxF.GetLength(1) + 2;
-            xlWSheet.Cells[1, 1 + columnDelta ] = "Avg fitness";
+            xlWSheet.Cells[1, 1 + columnDelta] = "Avg fitness";
 
             //add experiment numbers for maxF
             for (int i = 0; i < avgF.GetLength(1); ++i)
@@ -265,9 +246,6 @@ namespace ga1
                     xlWSheet.Cells[i + 3, j + 2 + columnDelta] = avgF[i, j];
             }
 
-
-
-            
             Excel.ChartObject avgChart = (Excel.ChartObject)xlCharts.Add(10 + columnDelta * 50, 17 * (avgF.GetLength(0) + 2), 300, 250);
 
             avgChart.Chart.ChartType = Excel.XlChartType.xlLine;
@@ -279,7 +257,7 @@ namespace ga1
             Excel.ChartObject avgChart2 = (Excel.ChartObject)xlCharts.Add(10 + columnDelta * 50, 17 * (maxF.GetLength(0) + 2) + 310, 300, 250);
 
             avgChart2.Chart.ChartType = Excel.XlChartType.xlLine;
-            avgChart2.Chart.SetSourceData(xlWSheet.Range[xlWSheet.Cells[3, avgF.GetLength(1) + 1 + columnDelta], xlWSheet.Cells[maxF.GetLength(0) + 3, avgF.GetLength(1) + 1 +columnDelta]]);
+            avgChart2.Chart.SetSourceData(xlWSheet.Range[xlWSheet.Cells[3, avgF.GetLength(1) + 1 + columnDelta], xlWSheet.Cells[maxF.GetLength(0) + 3, avgF.GetLength(1) + 1 + columnDelta]]);
 
             xlAp.Visible = true;
             //xlWBook.SaveAs("d:\\temp\\test.xls", Excel.XlFileFormat.xlWorkbookNormal, misValue, misValue,
@@ -289,7 +267,6 @@ namespace ga1
             releaseObject(xlWSheet);
             releaseObject(xlWBook);
             releaseObject(xlAp);
-
         }
     }
 }

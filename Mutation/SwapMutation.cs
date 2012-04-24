@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 
 namespace ga1
 {
@@ -15,6 +13,7 @@ namespace ga1
             this.point1 = point1;
             this.point2 = point2;
         }
+
         public IChromosome<T> Mutate(IChromosome<T> chromo)
         {
             MutationTools.CheckPoint(ref point1, chromo.Length);
@@ -27,7 +26,9 @@ namespace ga1
             CrossoverTools.Swap<T>(ref chromoGens[point1], ref chromoGens[point2]);
             return ((IChromosome<T>)Activator.CreateInstance(chromo.GetType())).GenerateFromArray(chromoGens);
         }
+
         private int point1, point2;
+
         public int Point1
         {
             get

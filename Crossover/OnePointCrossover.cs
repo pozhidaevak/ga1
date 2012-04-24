@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
 namespace ga1 //бициллин
 {
@@ -15,6 +12,7 @@ namespace ga1 //бициллин
         {
             this.crossoverPoint = crossoverPoint;
         }
+
         public virtual IChromosome<T>[] Crossover(IChromosome<T> father, IChromosome<T> mother)
         {
             CrossoverTools.CheckChromosomes(father, mother);
@@ -28,7 +26,6 @@ namespace ga1 //бициллин
                 crossoverPoint = (crossoverPoint - 1) % (father.Length - 1) + 1;
             }
 
-
             Array fatherGens = father.ToArray();
             Array motherGens = mother.ToArray();
 
@@ -38,15 +35,16 @@ namespace ga1 //бициллин
             //this is one point crossover
             Array.Copy(fatherGens, child1, crossoverPoint);
             Array.Copy(motherGens, child2, crossoverPoint);
-            Array.Copy(fatherGens, crossoverPoint , child2, crossoverPoint, fatherGens.Length - crossoverPoint);
+            Array.Copy(fatherGens, crossoverPoint, child2, crossoverPoint, fatherGens.Length - crossoverPoint);
             Array.Copy(motherGens, crossoverPoint, child1, crossoverPoint, fatherGens.Length - crossoverPoint);
-          
+
             IChromosome<T>[] childArray = new IChromosome<T>[2] { ((IChromosome<T>)Activator.CreateInstance(father.GetType())).GenerateFromArray(child1),
             ((IChromosome<T>)Activator.CreateInstance(father.GetType())).GenerateFromArray(child2) };
             return childArray;
         }
 
         private int crossoverPoint = -1;
+
         public int Point
         {
             get

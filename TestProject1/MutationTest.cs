@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using ga1;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using ga1;
 
 namespace TestProject1
 {
@@ -28,6 +25,7 @@ namespace TestProject1
             IChromosome<bool> exp = new BinaryChromosome().GenerateFromArray(new bool[] { true, true, false, false });
             Assert.AreEqual(exp, res);
         }
+
         [TestMethod]
         public void OnePointSwapMutationTest()
         {

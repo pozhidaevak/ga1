@@ -1,8 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Diagnostics;
-
+using System.Linq;
 
 namespace ga1
 {
@@ -43,14 +41,13 @@ namespace ga1
             motherArr = motherArr.Skip(point).Concat(motherArr.Take(point)).ToArray();
             //fatherArr = CrossoverTools.RotateLeft(fatherArr, point);
             //motherArr = CrossoverTools.RotateLeft(motherArr, point);
-            
+
             //adding unique elements from another parent(in order from point)
             //Array subChild = Array.CreateInstance(fatherArr.GetType().GetElementType(), point);
             //int childInd = point;
             //Array.Copy(child1, subChild, point);
             //for(int i = 0; i <= fatherArr.Length; ++i)
             //{
-                
             //if(!child1.Take(point).Contains(motherArr[i]))
             //{
             //    child1[childInd] = motherArr[i];
@@ -69,7 +66,7 @@ namespace ga1
             Array.Copy(childAddition, 0, child2, point, father.Length - point);
 
             //childInd =point;
-           
+
             //Array.Copy(child2, subChild, point);
             //for(int i = 0; i <= fatherArr.Length; ++i)
             //{
@@ -84,7 +81,9 @@ namespace ga1
             ((IChromosome<T>)Activator.CreateInstance(father.GetType())).GenerateFromArray(child2) };
             return childArray;
         }
+
         private int point;
+
         public int Point
         {
             get

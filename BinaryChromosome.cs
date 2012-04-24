@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 
 namespace ga1
 {
@@ -59,27 +57,32 @@ namespace ga1
                 throw new Exception("Chromosome length must be possitive number");
             }
             gens = new bool[length];
-            for (int i = 0; i < length; ++i )
+            for (int i = 0; i < length; ++i)
                 gens[i] = Program.rnd.Next(0, 2) == 0 ? false : true;
             return this;
         }
+
         public static bool operator ==(BinaryChromosome lhs, BinaryChromosome rhs)
         {
             return lhs.gens.SequenceEqual(rhs.gens);
         }
+
         public static bool operator !=(BinaryChromosome lhs, BinaryChromosome rhs)
         {
             return !lhs.gens.SequenceEqual(rhs.gens);
         }
+
         public override bool Equals(object obj)
         {
             return obj.GetType() == this.GetType() && this == (BinaryChromosome)obj;
         }
+
         public override int GetHashCode()
         {
             throw new NotImplementedException("DigitalChromosome.GetHashCode");
             return base.GetHashCode();
         }
+
         private bool[] gens;
     }
 }

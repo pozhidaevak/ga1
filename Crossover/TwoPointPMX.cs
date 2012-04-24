@@ -8,7 +8,7 @@ namespace ga1
     /// Two point partially mathched crossover
     /// </summary>
     /// <typeparam name="T">Type of gens</typeparam>
-    public class TwoPointPMX<T>: ICrossover<T>
+    public class TwoPointPMX<T> : ICrossover<T>
     {
         public TwoPointPMX(int point1, int point2)
         {
@@ -23,6 +23,7 @@ namespace ga1
                 this.point2 = point2;
             }
         }
+
         public IChromosome<T>[] Crossover(IChromosome<T> father, IChromosome<T> mother)
         {
             //Checking input variables
@@ -83,7 +84,9 @@ namespace ga1
                 ((IChromosome<T>)Activator.CreateInstance(father.GetType())).GenerateFromArray(child2) };
             return childArray;
         }
+
         private int point1, point2;
+
         public int Point1
         {
             get

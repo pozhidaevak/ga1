@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 
 namespace ga1
@@ -32,11 +31,12 @@ namespace ga1
             }
 
             T[] chromoGens = chromo.ToArray();
-            chromoGens = chromoGens.Take(point1).Concat(chromoGens.Skip(point1).Take(point2 - point1 + 1).ToArray().Reverse()).Concat(chromoGens.Skip(point2+1)).ToArray();
+            chromoGens = chromoGens.Take(point1).Concat(chromoGens.Skip(point1).Take(point2 - point1 + 1).ToArray().Reverse()).Concat(chromoGens.Skip(point2 + 1)).ToArray();
             return ((IChromosome<T>)Activator.CreateInstance(chromo.GetType())).GenerateFromArray(chromoGens);
         }
 
         private int point1, point2;
+
         public int Point1
         {
             get

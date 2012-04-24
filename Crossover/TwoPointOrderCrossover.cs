@@ -1,11 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Diagnostics;
+using System.Linq;
 
 namespace ga1
 {
-    public class TwoPointOrderCrossover<T>:ICrossover<T>
+    public class TwoPointOrderCrossover<T> : ICrossover<T>
     {
         public TwoPointOrderCrossover(int point1, int point2)
         {
@@ -20,6 +19,7 @@ namespace ga1
                 this.point2 = point2;
             }
         }
+
         public IChromosome<T>[] Crossover(IChromosome<T> father, IChromosome<T> mother)
         {
             //Checking input variables
@@ -69,7 +69,9 @@ namespace ga1
                 ((IChromosome<T>)Activator.CreateInstance(father.GetType())).GenerateFromArray(child2) };
             return childArray;
         }
+
         private int point1, point2;
+
         public int Point1
         {
             get

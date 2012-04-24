@@ -1,13 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 
 namespace ga1
 {
     public class GreedyCrossover : ICrossover<int>
     {
-        public GreedyCrossover(int point1, int point2, int[, ] matrix)
+        public GreedyCrossover(int point1, int point2, int[,] matrix)
         {
             if (matrix.GetLength(0) != matrix.GetLength(1))
             {
@@ -45,7 +43,7 @@ namespace ga1
             {
                 throw new ArgumentOutOfRangeException("father", father, "sets of gens in mother and father aren't equal");
             }
-            
+
             //initialaize children
             int[] child1 = new int[father.Length];
             int[] child2 = new int[father.Length];
@@ -58,6 +56,7 @@ namespace ga1
             ((IChromosome<int>)Activator.CreateInstance(father.GetType())).GenerateFromArray(child2) };
             return childArray;
         }
+
         public double CalcFitness(IChromosome<int> chromo)
         {
             int[] gens = chromo.ToArray();
@@ -69,7 +68,7 @@ namespace ga1
             return res;
         }
 
-        private int[] BuildChild( int[] child, int point, int[] father, int[] mother)
+        private int[] BuildChild(int[] child, int point, int[] father, int[] mother)
         {
             child[0] = point;
             int fatherInd = -1;
@@ -83,16 +82,19 @@ namespace ga1
                 if (child.Take(i).Contains(nextCandidate))
                 {
                     nextCandidate = 0;
-                    do{
-                        nextCandidate = Program.rnd.Next(1,father.Length + 1);
+                    do
+                    {
+                        nextCandidate = Program.rnd.Next(1, father.Length + 1);
                         //++nextCandidate;
-                    } while(child.Take(i).Contains(nextCandidate));
+                    } while (child.Take(i).Contains(nextCandidate));
                 }
                 child[i] = nextCandidate;
             }
             return child;
         }
+
         private int point1, point2;
+
         public int Point1
         {
             get
@@ -100,6 +102,7 @@ namespace ga1
                 return point1;
             }
         }
+
         public int Point2
         {
             get
@@ -107,8 +110,10 @@ namespace ga1
                 return point2;
             }
         }
-        private int[, ] matrix;
-        public int[, ] Matrix
+
+        private int[,] matrix;
+
+        public int[,] Matrix
         {
             get
             {

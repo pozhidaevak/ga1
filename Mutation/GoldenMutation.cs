@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 
 namespace ga1
 {
@@ -10,6 +8,7 @@ namespace ga1
             : base((int)Math.Round(length / 1.61803))
         {
         }
+
         public IChromosome<T> mutate(IChromosome<T> chromo)
         {
             return base.Mutate(chromo);

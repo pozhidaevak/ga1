@@ -8,6 +8,7 @@ namespace ga1
     {
         static Func<int, int, int, IEnumerable<int>> fib = (n, m, cap) => n + m > cap ? Enumerable.Empty<int>()
         : Enumerable.Repeat(n + m, 1).Concat(fib(m, n + m, cap));
+
         public FibonacciCrossover(int length)
             : base(length)
         {
@@ -21,10 +22,12 @@ namespace ga1
                 base.mask[i] = Array.FindLastIndex(FibArr, x => x <= i) % 2 == 0;
             }
         }
+
         public override IChromosome<T>[] Crossover(IChromosome<T> father, IChromosome<T> mother)
         {
             return base.Crossover(father, mother);
         }
+
         public int[] FibArr { get; private set; }
     }
 }

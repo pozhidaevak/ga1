@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Collections;
 
 namespace ga1
@@ -9,6 +6,7 @@ namespace ga1
     public class UniversalCrossover<T> : ICrossover<T>
     {
         protected BitArray mask;
+
         public BitArray Mask
         {
             get
@@ -16,10 +14,12 @@ namespace ga1
                 return mask;
             }
         }
+
         public UniversalCrossover(BitArray mask)
         {
             this.mask = new BitArray(mask);
         }
+
         public UniversalCrossover(int length)
         {
             if (length <= 0)
@@ -29,6 +29,7 @@ namespace ga1
             mask = new BitArray(length);
             mask.Length = length;
         }
+
         public BitArray RandomizeMask()
         {
             int length = mask.Length;
@@ -38,6 +39,7 @@ namespace ga1
             mask.Length = length;
             return Mask;
         }
+
         public virtual IChromosome<T>[] Crossover(IChromosome<T> father, IChromosome<T> mother)
         {
             CrossoverTools.CheckChromosomes(father, mother);

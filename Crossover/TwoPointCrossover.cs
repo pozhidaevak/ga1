@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-namespace ga1
+﻿namespace ga1
 {
     /// <summary>
     /// Implements two point crossover by using UniversalCrossover
@@ -31,6 +26,7 @@ namespace ga1
                 this.point2 = point2;
             }
         }
+
         public override IChromosome<T>[] Crossover(IChromosome<T> father, IChromosome<T> mother)
         {
             CrossoverTools.CheckPoint(ref point1, base.mask.Length);
@@ -53,6 +49,7 @@ namespace ga1
         }
 
         private int point1, point2;
+
         public int Point1
         {
             get
@@ -60,6 +57,7 @@ namespace ga1
                 return point1;
             }
         }
+
         public int Point2
         {
             get
@@ -67,6 +65,7 @@ namespace ga1
                 return point2;
             }
         }
+
         public int Length
         {
             get
