@@ -123,7 +123,7 @@ namespace ga1
             {
                 for (int j = i + 1; j < forSelection.Length; ++j)
                 {
-                    if (Program.rnd.NextDouble() >= crossoverProb)
+                    if (Program.rnd.NextDouble() <= crossoverProb)
                     {
                         Trace.WriteLine("Crossover: " + forSelection[i].ToString() + " with " + forSelection[j].ToString());
                         childs.AddRange(Crossover.Crossover(forSelection[i], forSelection[j]));
@@ -140,7 +140,7 @@ namespace ga1
             //mutation
             for (int i = 0; i < afterCrossover.Length; ++i)
             {
-                if (Program.rnd.NextDouble() >= mutationProb)
+                if (Program.rnd.NextDouble() <= mutationProb)
                 {
                     Trace.WriteLine("Mutate " + afterCrossover[i].ToString());
                     afterCrossover[i] = Mutation.Mutate(afterCrossover[i]);
