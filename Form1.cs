@@ -74,8 +74,8 @@ namespace ga1
         {
             //initialize var
             int cLength = Convert.ToInt32(chromoLength.Text);
-            EliteSelection<int> sel2 = new EliteSelection<int>(0);
-            RouletteSelection<int> sel1 = new RouletteSelection<int>();
+            EliteSelection<int> sel1 = new EliteSelection<int>(4);
+            RouletteSelection<int> sel2 = new RouletteSelection<int>();
             GreedyCrossover cros = new GreedyCrossover(-1, -1, matrix);
             GoldenMutation<int> mut = new GoldenMutation<int>(cLength);
             pop = new Population<int>(mut, cros, sel1, sel2, x => 1 / cros.CalcFitness(x),
@@ -191,8 +191,8 @@ namespace ga1
 
         private void exportBtn_Click(object sender, EventArgs e)
         {
-            //if (maxF == null || avgF == null || maxF.Length <= 0 || avgF.Length <= 0)
-            //    throw new Exception("nothing to export");
+            if (maxF == null || avgF == null || maxF.Length <= 0 || avgF.Length <= 0)
+                throw new Exception("nothing to export");
             Excel.Application xlAp = new Excel.Application();
             object misValue = System.Reflection.Missing.Value;
             Excel.Workbook xlWBook = xlAp.Workbooks.Add(misValue);
